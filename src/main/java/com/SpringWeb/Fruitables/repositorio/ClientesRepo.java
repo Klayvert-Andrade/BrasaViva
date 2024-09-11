@@ -1,0 +1,16 @@
+package com.SpringWeb.Fruitables.repositorio;
+
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+
+import com.SpringWeb.Fruitables.models.Cliente;
+
+
+public interface ClientesRepo extends CrudRepository<Cliente, Integer>{
+    @Query(value="select CASE WHEN count(1) > 0 THEN 'true' ELSE 'false' END  from clientes where id = :id", nativeQuery = true)
+    public boolean exist(int id);
+
+    @Query(value="select * from clientes where email = :email and senha = :senha", nativeQuery = true)
+    public Cliente Login(String email, String senha);
+    
+}

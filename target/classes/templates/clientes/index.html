@@ -1,0 +1,71 @@
+<div th:replace="shared/header"></div>   
+    <!-- Begin Page Content -->
+    <div class="container-fluid page-content">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Clientes</h1>
+        <p class="mb-4">
+            Aqui listará os clientes do sistema
+        </p>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <a href="/clientes/novo" class="btn btn-primary" style="margin-right: 13px;">Novo</a>
+                <h6 class="m-0 font-weight-bold text-primary" style="display: inline-block;">Lista de Clientes</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>CPF</th>
+                                <th></th>
+                                <th></th>
+
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>CPF</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <tr th:each="cliente : ${clientes}">
+
+                                <td th:text="${cliente.id}"></td>
+                                <td th:text="${cliente.nome}"></td>
+                                <td th:text="${cliente.email}"></td>
+                                <td th:text="${cliente.cpf}"></td>
+
+                                  <!-- Botão Alterar -->
+                                  <td>
+                                    <a th:href="@{'/clientes/' + ${cliente.id}}" class="btn btn-warning">Alterar</a>
+                                </td>
+
+                                 <!-- Botão Excluir -->
+                                 <td>
+                                    <a th:href="@{/clientes/{id}/excluir(id=${cliente.id})}" 
+                                        onclick="return confirm('Tem certeza que deseja excluir este cliente?');" 
+                                        class="btn btn-danger">
+                                        Excluir
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+<div th:replace="shared/footer"></div>
