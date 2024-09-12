@@ -88,7 +88,7 @@
                                     <div class="col-md-6 col-lg-4 col-xl-3" th:each="produto : ${produtos}">
                                         <div class="rounded position-relative fruite-item">
                                             <div class="fruite-img">
-                                                <img th:src="@{/img/[[${produto.imagemUrl}]]}" class="img-fluid w-100 rounded-top" alt="Imagem do Produto">
+                                                <img th:src="@{/img/${produto.imagemUrl}}" class="img-fluid w-100 rounded-top" alt="Imagem do Produto">
                                             </div>
                                             <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;" 
                                                 th:text="${produto.categoria}"></div>
@@ -98,11 +98,10 @@
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <p class="text-dark fs-5 fw-bold mb-0" th:text="'$' + ${produto.preco} + ' / kg'"></p>
                                                     <!-- Botão para adicionar ao carrinho -->
-                                                    <a href="javascript:void(0);" 
-                                                        class="btn border border-secondary rounded-pill px-3 text-primary" 
-                                                        onclick="adicionarAoCarrinho(1)"> <!-- Corrigido -->
-                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
-                                                 </a>
+                                                    <a class="btn border border-secondary rounded-pill px-3 text-primary" 
+                                                        th:href="@{/carrinho/adicionarCarrinho/{id}(id=${produto.id})}">
+                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i> Comprar
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -410,17 +409,17 @@
         </div>
         <!-- Bestsaler Product End -->
 
-        <!-- Coloque isso no seu HTML antes de qualquer outro script -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
         <script>
             function adicionarAoCarrinho(produtoId) {
                 $.ajax({
-                    url: '/carrinho/add/' + produtoId, // Construção correta da URL
+                    url: '/carrinho/add/' + produtoId,
                     type: 'POST',
+                    data: { id: produtoId },
                     success: function(response) {
                         alert("Produto adicionado ao carrinho com sucesso!");
-                        atualizarQuantidadeCarrinho(); // Atualizar a quantidade de itens no carrinho
+                        // atualizarCarrinho(); 
                     },
                     error: function(xhr, status, error) {
                         console.error("Erro ao adicionar produto ao carrinho:", error);
@@ -429,16 +428,28 @@
                 });
             }
 
-            function atualizarQuantidadeCarrinho() {
+            function atualizarCarrinho() {
                 $.ajax({
-                    url: '/carrinho/quantidade',
+                    url: '/carrinho', // Rota que retorna a visualização atualizada do carrinho
                     type: 'GET',
                     success: function(response) {
-                        // Atualiza o número de itens no carrinho
-                        $('#carrinho-quantidade').text(response + ' itens');
+                        $('#produtos-container').html(response); // Atualiza o conteúdo da área de produtos
                     },
-                    error: function() {
-                        console.log("Erro ao buscar quantidade do carrinho.");
+                    error: function(xhr, status, error) {
+                        console.error("Erro ao atualizar o carrinho:", error);
+                    }
+                });
+            }
+
+            function atualizarQuantidadeCarrinho() {
+                $.ajax({
+                    url: '/carrinho/quantidade', // Um endpoint que retorna a quantidade de itens no carrinho
+                    type: 'GET',
+                    success: function(response) {
+                        $('#carrinho-quantidade').text(response.quantidade); // Atualiza o contador de itens no carrinho
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Erro ao atualizar a quantidade do carrinho:", error);
                     }
                 });
             }

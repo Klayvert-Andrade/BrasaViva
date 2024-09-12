@@ -14,6 +14,9 @@ C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\models\Estoque
 C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\models\ItemCarrinho.java
 C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\models\Produto.java
 C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\repositorio\AdministradoresRepo.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\repositorio\CarrinhoRepo.java
 C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\repositorio\ClientesRepo.java
 C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\repositorio\EstoqueRepo.java
-C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\repositorio\ProdutosRepo.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\repositorio\ProdutoRepo.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\services\CarrinhoService.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\services\ProdutoService.java
