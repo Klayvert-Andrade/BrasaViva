@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.SpringWeb.Fruitables.models.Carrinho;
+import com.SpringWeb.Fruitables.models.ItemCarrinho;
 import com.SpringWeb.Fruitables.models.Produto;
 import com.SpringWeb.Fruitables.repositorio.CarrinhoRepo;
 import com.SpringWeb.Fruitables.repositorio.ProdutoRepo;
@@ -68,5 +69,12 @@ public class CarrinhoService {
     public double calcularTotal() {
         Carrinho carrinho = getCarrinhoFromSession();
         return carrinho.calcularTotal();
+    }
+
+    public int contarItensNoCarrinho() {
+        Carrinho carrinho = getCarrinhoFromSession();
+        return carrinho.getItens().stream()
+                .mapToInt(ItemCarrinho::getQuantidade)
+                .sum();
     }
 }

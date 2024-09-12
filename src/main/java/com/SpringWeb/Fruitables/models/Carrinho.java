@@ -74,4 +74,12 @@ public class Carrinho {
                 .mapToDouble(ItemCarrinho::getTotal)
                 .sum();
     }
+
+    public int contarItens() {
+        int quantidadeTotal = 0;
+        for (ItemCarrinho item : itens) {
+            quantidadeTotal += item.getQuantidade();
+        }
+        return quantidadeTotal;
+    }
 }

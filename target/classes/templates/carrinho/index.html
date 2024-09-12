@@ -12,12 +12,12 @@
                     <table class="table">
                         <thead>
                           <tr>
-                            <th scope="col">Produtos</th>
+                            <th scope="col">Produto</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Preço</th>
                             <th scope="col">Quantidade</th>
                             <th scope="col">Total</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">Remover</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -29,8 +29,8 @@
                                     <form action="/carrinho/update" method="post">
                                         <input type="hidden" name="produtoId" th:value="${item.produto.id}">
                                         <div class="input-group">
-                                            <input type="text" name="quantidade" th:value="${item.quantidade}" class="form-control">
-                                            <button type="submit" class="btn btn-sm btn-plus">Update</button>
+                                            <input type="number" name="quantidade" th:value="${item.quantidade}" class="form-control">
+                                            <button type="submit" class="btn btn-sm btn-plus">Alterar</button>
                                         </div>
                                     </form>
                                 </td>
@@ -38,17 +38,16 @@
                                 <td>
                                     <form action="/carrinho/remove" method="post">
                                         <input type="hidden" name="produtoId" th:value="${item.produto.id}">
-                                        <button type="submit" class="btn btn-danger">Remove</button>
+                                        <button type="submit" class="btn btn-danger">Remover</button>
                                     </form>
                                 </td>
                             </tr>
-                        </tbody>
-                                                
+                        </tbody>                          
                     </table>
                 </div>
                 <div class="mt-5">
-                    <input type="text" class="border-0 border-bottom rounded me-5 py-3 mb-4" placeholder="Coupon Code">
-                    <button class="btn border-secondary rounded-pill px-4 py-3 text-primary" type="button">Apply Coupon</button>
+                    <input type="text" class="border-0 border-bottom rounded me-5 py-3 mb-4" placeholder="Código de Cupom">
+                    <button class="btn border-secondary rounded-pill px-4 py-3 text-primary" type="button">Aplicar Cupom</button>
                 </div>
                 <div class="row g-4 justify-content-end">
                     <div class="col-8"></div>
@@ -56,23 +55,30 @@
                         <div class="bg-light rounded">
                             <div class="p-4">
                                 <h1 class="display-6 mb-4">Carrinho <span class="fw-normal">Total</span></h1>
+                                
+                                <!-- Subtotal dinâmico -->
                                 <div class="d-flex justify-content-between mb-4">
                                     <h5 class="mb-0 me-4">Subtotal:</h5>
-                                    <p class="mb-0">$96.00</p>
+                                    <p class="mb-0" th:text="${subtotal} + ' $'"></p>
                                 </div>
+                                
+                                <!-- Shipping dinâmico -->
                                 <div class="d-flex justify-content-between">
-                                    <h5 class="mb-0 me-4">Shipping</h5>
+                                    <h5 class="mb-0 me-4">Envio:</h5>
                                     <div class="">
-                                        <p class="mb-0">Flat rate: $3.00</p>
+                                        <p class="mb-0" th:text="'Taxa Fixa: ' + ${shipping} + ' $'"></p>
                                     </div>
                                 </div>
-                                <p class="mb-0 text-end">Shipping to Ukraine.</p>
+                                <p class="mb-0 text-end">Envio para João Pessoa</p>
                             </div>
+                            
+                            <!-- Total dinâmico -->
                             <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                                 <h5 class="mb-0 ps-4 me-4">Total</h5>
-                                <p class="mb-0 pe-4">$99.00</p>
+                                <p class="mb-0 pe-4" th:text="${total} + ' R$'"></p>
                             </div>
-                            <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button">Proceed Checkout</button>
+                            
+                            <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button">Pagar</button>
                         </div>
                     </div>
                 </div>
