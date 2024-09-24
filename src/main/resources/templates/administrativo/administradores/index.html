@@ -3,16 +3,13 @@
     <div class="container-fluid page-content">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Clientes</h1>
-        <p class="mb-4">
-            Aqui listará os clientes do sistema
-        </p>
-
+        <h1 class="h3 mb-2 text-gray-800">Administradores</h1>
+        
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <a href="/clientes/novo" class="btn btn-primary" style="margin-right: 13px;">Novo</a>
-                <h6 class="m-0 font-weight-bold text-primary" style="display: inline-block;">Lista de Clientes</h6>
+                <a href="/administradores/novo" class="btn btn-primary" style="margin-right: 13px;">Novo</a>
+                <h6 class="m-0 font-weight-bold text-primary" style="display: inline-block;">Lista de Administradores</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -28,33 +25,23 @@
 
                             </tr>
                         </thead>
-                        <tfoot>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nome</th>
-                                <th>Email</th>
-                                <th>CPF</th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </tfoot>
                         <tbody>
-                            <tr th:each="cliente : ${clientes}">
+                            <tr th:each="administrador : ${administradores}">
 
-                                <td th:text="${cliente.id}"></td>
-                                <td th:text="${cliente.nome}"></td>
-                                <td th:text="${cliente.email}"></td>
-                                <td th:text="${cliente.cpf}"></td>
+                                <td th:text="${administrador.id}"></td>
+                                <td th:text="${administrador.nome}"></td>
+                                <td th:text="${administrador.email}"></td>
+                                <td th:text="${administrador.cpf}"></td>
 
                                   <!-- Botão Alterar -->
                                   <td>
-                                    <a th:href="@{'/clientes/' + ${cliente.id}}" class="btn btn-warning">Alterar</a>
+                                    <a th:href="@{'/administradores/' + ${administrador.id}}" class="btn btn-warning">Alterar</a>
                                 </td>
 
                                  <!-- Botão Excluir -->
                                  <td>
-                                    <a th:href="@{/clientes/{id}/excluir(id=${cliente.id})}" 
-                                        onclick="return confirm('Tem certeza que deseja excluir este cliente?');" 
+                                    <a th:href="@{/administradores/{id}/excluir(id=${administrador.id})}" 
+                                        onclick="return confirm('Tem certeza que deseja excluir este administrador?');" 
                                         class="btn btn-danger">
                                         Excluir
                                     </a>

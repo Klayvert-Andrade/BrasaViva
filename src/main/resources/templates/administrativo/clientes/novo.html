@@ -4,18 +4,17 @@
         <!-- Page Heading -->
         <div class="row mb-4">
             <div class="col-lg-12">
-                <h1 class="h3 mb-2 text-gray-800">Novo Administrador</h1>
-                <p class="mb-4">Aqui cadastraremos um novo administrador.</p>
+                <h1 class="h3 mb-2 text-gray-800">Novo Cliente</h1>
             </div>
         </div>
 
         <!-- Formulário de Cadastro -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Cadastro de Administrador</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Cadastro de cliente</h6>
             </div>
             <div class="card-body">
-                <form method="POST" action="/administradores/criar" onsubmit="return confirm('Confirma a ação?')">
+                <form method="POST" action="/clientes/criar" onsubmit="return confirm('Confirma a ação?')">
                     <div class="form-group mb-3">
                         <label for="nome">Nome</label>
                         <input type="text" class="form-control" required id="nome" name="nome" placeholder="Digite o seu nome">

@@ -25,12 +25,12 @@ public class AdministradoresController {
         List<Administrador> administradores = (List<Administrador>)repo.findAll();
         model.addAttribute("administradores", administradores);
         
-        return "administradores/index";
+        return "administrativo/administradores/index";
     }
 
     @GetMapping("/administradores/novo")
     public String novo() {
-        return "administradores/novo";
+        return "administrativo/administradores/novo";
     }
 
     @PostMapping("/administradores/criar")
@@ -54,7 +54,7 @@ public class AdministradoresController {
             return "redirect:/administradores";
         }
         
-        return "/administradores/editar";
+        return "administrativo/administradores/editar";
     }
 
     @PostMapping("/administradores/{id}/atualizar")
@@ -66,7 +66,15 @@ public class AdministradoresController {
         repo.save(administrador);
         
         return "redirect:/administradores";
-    }
+    }    
+    
+    @GetMapping("/relatorios/administradores")
+    public String listar(Model model) {
+        List<Administrador> administradores = (List<Administrador>)repo.findAll();
+        model.addAttribute("administradores", administradores);
+
+        return "administrativo/administradores/lista";
+    }  
 } 
 
 

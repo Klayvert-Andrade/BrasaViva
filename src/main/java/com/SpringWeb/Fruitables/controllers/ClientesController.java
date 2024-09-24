@@ -25,12 +25,12 @@ public class ClientesController {
         List<Cliente> clientes = (List<Cliente>)repo.findAll();
         model.addAttribute("clientes", clientes);
         
-        return "clientes/index";
+        return "administrativo/clientes/index";
     }
 
     @GetMapping("/clientes/novo")
     public String novo() {
-        return "clientes/novo";
+        return "administrativo/clientes/novo";
     }
 
     @PostMapping("/clientes/criar")
@@ -54,7 +54,7 @@ public class ClientesController {
             return "redirect:/clientes";
         }
         
-        return "/clientes/editar";
+        return "administrativo/clientes/editar";
     }
 
     @PostMapping("/clientes/{id}/atualizar")
@@ -67,6 +67,17 @@ public class ClientesController {
         
         return "redirect:/cliente";
     }
+
+    @GetMapping("/relatorios/clientes")
+    public String listar(Model model) {
+        List<Cliente> clientes = (List<Cliente>)repo.findAll();
+        model.addAttribute("clientes", clientes);
+
+        return "administrativo/clientes/lista";
+    }  
+
+    
+        
 } 
 
 

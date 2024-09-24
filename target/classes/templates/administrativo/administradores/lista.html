@@ -1,0 +1,39 @@
+<div th:replace="shared/header"></div>   
+    <!-- Begin Page Content -->
+    <div class="container-fluid page-content">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-4 text-gray-800">Relatório de Administradores</h1>
+        
+        <!-- Relatório de Administradores -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Informações dos Administradores</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>CPF</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="administrador : ${administradores}">
+                                <td th:text="${administrador.id}"></td>
+                                <td th:text="${administrador.nome}"></td>
+                                <td th:text="${administrador.email}"></td>
+                                <td th:text="${administrador.cpf}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+<div th:replace="shared/footer"></div>  
