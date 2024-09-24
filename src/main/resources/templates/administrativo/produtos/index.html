@@ -1,0 +1,61 @@
+<div th:replace="shared/header"></div>   
+    <!-- Begin Page Content -->
+    <div class="container-fluid page-content">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Produtos</h1>
+        
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <a href="/produtos/novo" class="btn btn-primary" style="margin-right: 13px;">Novo</a>
+                <h6 class="m-0 font-weight-bold text-primary" style="display: inline-block;">Lista de Produtos</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Descricao</th>
+                                <th>Preco</th>
+                                <th>Categoria</th>
+                                <th>ImagemUrl</th>
+                                <th></th>
+                                <th></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="produto : ${produtos}">
+                                <td th:text="${produto.id}"></td>
+                                <td th:text="${produto.nome}"></td>
+                                <td th:text="${produto.descricao}"></td>
+                                <td th:text="${produto.preco}"></td>
+                                <td th:text="${produto.categoria}"></td>
+                                <td th:text="${produto.imagemUrl}"></td>
+
+                                  <!-- Botão Alterar -->
+                                  <td>
+                                    <a th:href="@{'/produtos/' + ${produto.id}}" class="btn btn-warning">Alterar</a>
+                                </td>
+
+                                 <!-- Botão Excluir -->
+                                 <td>
+                                    <a th:href="@{/produtos/{id}/excluir(id=${produto.id})}" 
+                                        onclick="return confirm('Tem certeza que deseja excluir este produto?');" 
+                                        class="btn btn-danger">
+                                        Excluir
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+<div th:replace="shared/footer"></div>

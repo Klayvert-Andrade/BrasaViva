@@ -2,6 +2,8 @@ package com.SpringWeb.Fruitables.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,7 +58,9 @@ public class ProdutoService {
 
     // Recupera todos os produtos
     public List<Produto> findAll() {
-        return produtoRepo.findAll();
+        Iterable<Produto> produtos = produtoRepo.findAll();
+        return StreamSupport.stream(produtos.spliterator(), false)
+                            .collect(Collectors.toList());
     }
 
     // Recupera produtos por categoria

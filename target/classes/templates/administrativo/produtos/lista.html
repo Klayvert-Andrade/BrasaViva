@@ -1,0 +1,43 @@
+<div th:replace="shared/header"></div>   
+    <!-- Begin Page Content -->
+    <div class="container-fluid page-content">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-4 text-gray-800">Relatório de Produto</h1>
+        
+        <!-- Relatório de Administradores -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Informações dos Produtos</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Descricao</th>
+                                <th>Preco</th>
+                                <th>Categoria</th>
+                                <th>ImagemUrl</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="produto : ${produtos}">
+                                <td th:text="${produto.id}"></td>
+                                <td th:text="${produto.nome}"></td>
+                                <td th:text="${produto.descricao}"></td>
+                                <td th:text="${produto.preco}"></td>
+                                <td th:text="${produto.categoria}"></td>
+                                <td th:text="${produto.imagemUrl}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+<div th:replace="shared/footer"></div>  
