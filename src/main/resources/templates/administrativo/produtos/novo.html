@@ -14,7 +14,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Cadastro de Produto</h6>
             </div>
             <div class="card-body">
-                <form method="POST" action="/produtos/criar" onsubmit="return confirm('Confirma a ação?')">
+                <form method="POST" action="/produtos/criar" onsubmit="return confirm('Confirma a ação?')"enctype="multipart/form-data">
                     <!-- Nome do Produto -->
                     <div class="form-group mb-3">
                         <label for="nome">Nome</label>
@@ -30,7 +30,7 @@
                     <!-- Preço do Produto -->
                     <div class="form-group mb-3">
                         <label for="preco">Preço</label>
-                        <input type="number" step="0.01" class="form-control" required id="preco" name="preco" placeholder="Digite o preço do produto">
+                        <input type="number" step="0.02" class="form-control" required id="preco" name="preco" placeholder="Digite o preço do produto">
                     </div>
 
                     <!-- Categoria do Produto -->
@@ -42,13 +42,13 @@
                     <!-- Estoque do Produto -->
                     <div class="form-group mb-3">
                         <label for="categoria">Estoque</label>
-                        <input type="text" class="form-control" required id="quantidadeEstoque" name="quantidadeEstoque" placeholder="Digite o estoque do produto">
+                        <input type="number" class="form-control" required id="quantidadeEstoque" name="quantidadeEstoque" placeholder="Digite o estoque do produto">
                     </div>
 
-                    <!-- URL da Imagem do Produto -->
+                    <!-- Upload da Imagem do Produto -->
                     <div class="form-group mb-3">
-                        <label for="imagemUrl">URL da Imagem</label>
-                        <input type="text" class="form-control" required id="imagemUrl" name="imagemUrl" placeholder="Digite a URL da imagem do produto">
+                        <label for="imagem">Escolher Imagem</label>
+                        <input type="file" class="form-control-file" id="imagem" name="imagem" accept="image/*" required>
                     </div>
                     
                     <!-- Botão Cadastrar -->

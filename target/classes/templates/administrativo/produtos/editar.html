@@ -48,10 +48,24 @@
                             <input type="number" class="form-control" th:value="${produto.quantidadeEstoque}" required id="quantidadeEstoque" name="quantidadeEstoque" placeholder="Digite o estoque do produto">
                         </div>
 
-                        <!-- Campo ImagemURL -->
+                        <!-- Exibir imagem atual -->
                         <div class="form-group mb-3">
-                            <label for="imagemUrl">URL da Imagem</label>
-                            <input type="text" class="form-control" th:value="${produto.imagemUrl}" required id="imagemUrl" name="imagemUrl" placeholder="Digite a URL da imagem">
+                            <label for="imagemAtual">Imagem Atual</label>
+                            <br>
+                            <img th:src="@{${produto.imagemUrl}}" alt="Imagem do produto" class="img-thumbnail" width="200">
+                        </div>
+
+                        <!-- Upload da nova imagem -->
+                        <div class="form-group mb-3">
+                            <label for="imagem">Escolher Nova Imagem</label>
+                            <input type="file" class="form-control-file" id="imagem" name="imagem" accept="image/*" onchange="previewImagem(event)">
+                        </div>
+
+                        <!-- Visualização da nova imagem selecionada -->
+                        <div class="form-group mb-3">
+                            <label for="novaImagemPreview">Pré-visualização da nova imagem</label>
+                            <br>
+                            <img id="novaImagemPreview" src="#" alt="Pré-visualização da nova imagem" class="img-thumbnail" width="200" style="display: none;">
                         </div>
 
                         <!-- Botão Salvar -->
@@ -61,6 +75,25 @@
             </div>
         </div>
         <!-- /.container-fluid -->
+
+        <script>
+            // Função para fazer a pré-visualização da nova imagem selecionada
+            function previewImagem(event) {
+                var input = event.target;
+                var reader = new FileReader();
+                
+                reader.onload = function(){
+                    var imgPreview = document.getElementById('novaImagemPreview');
+                    imgPreview.src = reader.result;
+                    imgPreview.style.display = 'block'; // Exibe a imagem
+                };
+            
+                // Verifica se o arquivo foi selecionado
+                if (input.files && input.files[0]) {
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            </script>
 
 <div th:replace="administrativo/shared_adm/footer"></div>   
 
