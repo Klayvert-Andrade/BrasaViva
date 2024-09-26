@@ -62,10 +62,10 @@ public class ClientesController {
         if(!repo.existsById(id)) {
             return "redirect:/clientes";
         }
-
+        cliente.setId(id); 
         repo.save(cliente);
         
-        return "redirect:/cliente";
+        return "redirect:/clientes";
     }
 
     @GetMapping("/relatorios/clientes")

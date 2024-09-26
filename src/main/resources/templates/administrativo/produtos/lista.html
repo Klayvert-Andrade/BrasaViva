@@ -21,6 +21,7 @@
                                 <th>Descricao</th>
                                 <th>Preco</th>
                                 <th>Categoria</th>
+                                <th>Estoque</th>
                                 <th>ImagemUrl</th>
                             </tr>
                         </thead>
@@ -31,6 +32,7 @@
                                 <td th:text="${produto.descricao}"></td>
                                 <td th:text="${produto.preco}"></td>
                                 <td th:text="${produto.categoria}"></td>
+                                <td th:text="${produto.quantidadeEstoque}"></td>
                                 <td th:text="${produto.imagemUrl}"></td>
                             </tr>
                         </tbody>

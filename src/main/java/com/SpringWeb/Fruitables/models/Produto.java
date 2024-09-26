@@ -19,7 +19,7 @@ public class Produto {
     @Column(name = "nome", length = 180, nullable = false)
     private String nome;
 
-    @Column(name = "descricao", length = 500)
+    @Column(name = "descricao", length = 500,  nullable = false)
     private String descricao;
 
     @Column(name = "preco", nullable = false)
@@ -30,6 +30,9 @@ public class Produto {
 
     @Column(name = "imagem_url", length = 255)
     private String imagemUrl;
+
+    @Column(name = "quantidadeEstoque", length= 10, nullable=false)
+    private int quantidadeEstoque = 0;
 
     public int getId() {
         return id;
@@ -77,6 +80,14 @@ public class Produto {
 
     public void setImagemUrl(String imagemUrl) {
         this.imagemUrl = imagemUrl;
+    }
+
+    public int getQuantidadeEstoque() {
+        return quantidadeEstoque;
+    }
+
+    public void setQuantidadeEstoque(int quantidadeEstoque) {
+        this.quantidadeEstoque = quantidadeEstoque;
     }
 
 }

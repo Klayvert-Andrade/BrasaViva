@@ -20,6 +20,7 @@ public class AdministradoresController {
     @Autowired
     private AdministradoresRepo repo;
 
+    // listar todos os administradores
     @GetMapping("/administradores")
     public String index(Model model) {
         List<Administrador> administradores = (List<Administrador>)repo.findAll();
@@ -28,11 +29,13 @@ public class AdministradoresController {
         return "administrativo/administradores/index";
     }
 
+    // Exibir formulário para criar um novo administrador
     @GetMapping("/administradores/novo")
     public String novo() {
         return "administrativo/administradores/novo";
     }
 
+    // Processar o formulário de criação de novo administrador
     @PostMapping("/administradores/criar")
     public String criar(Administrador administrador) {
         repo.save(administrador);

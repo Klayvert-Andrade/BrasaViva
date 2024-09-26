@@ -22,10 +22,10 @@ public class ProdutoController {
     // listar todos os produtos
     @GetMapping("/produtos")
     public String index(Model model) {
-        List<Produto> produtos = (List<Produto>)repo.findAll();
-        model.addAttribute("produtos", produtos);
+        List<Produto> produtos = (List<Produto>)repo.findAll(); // Busca todos os produtos do repositório
+        model.addAttribute("produtos", produtos);  // Adiciona os produtos ao modelo para serem exibidos na view
         
-        return "administrativo/produtos/index";
+        return "administrativo/produtos/index"; // Retorna o template que exibirá a lista de produtos
     }
 
     // Exibir formulário para criar um novo produto
@@ -34,7 +34,8 @@ public class ProdutoController {
         return "administrativo/produtos/novo";
     }
 
-    @GetMapping("/produtos/criar")
+    // Processar o formulário de criação de novo produto
+    @PostMapping("/produtos/criar")
     public String criar(Produto produto) {
         repo.save(produto);
         return "redirect:/produtos";
@@ -53,21 +54,23 @@ public class ProdutoController {
         Optional<Produto> produto = repo.findById(id);
         if (produto.isPresent()) {
             model.addAttribute("produto", produto.get());
-            return "/produtos/editar";
+            return "administrativo/produtos/editar";
         } else {
+            System.out.println("Produto com ID " + id + " não encontrado.");
             return "redirect:/produtos";
         }
     }
 
-     // Atualizar produto existente
     @PostMapping("/produtos/{id}/atualizar")
     public String atualizar(@PathVariable int id, Produto produto) {
-        if (!repo.existsById(id)) {
+        if(!repo.existsById(id)) {
             return "redirect:/produtos";
         }
+
         repo.save(produto);
+        
         return "redirect:/produtos";
-    }
+    }    
 
     @GetMapping("/relatorios/produtos")
     public String listar(Model model) {
@@ -75,7 +78,7 @@ public class ProdutoController {
         model.addAttribute("produtos", produtos);
 
         return "administrativo/produtos/lista";
-    }  
+    }   
 
     // // Lista todos os produtos
     // @GetMapping
