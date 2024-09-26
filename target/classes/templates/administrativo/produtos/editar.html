@@ -17,7 +17,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Editar Produto</h6>
                 </div>
                 <div class="card-body">
-                    <form method="POST" th:action="@{'/produtos/' + ${produto.id} + '/atualizar'}" onsubmit="return confirm('Confirma a ação?')">
+                    <form method="POST" th:action="@{'/produtos/' + ${produto.id} + '/atualizar'}" onsubmit="return confirm('Confirma a ação?')" enctype="multipart/form-data">
                         <!-- Campo Nome -->
                         <div class="form-group mb-3">
                             <label for="nome">Nome</label>
@@ -81,19 +81,19 @@
             function previewImagem(event) {
                 var input = event.target;
                 var reader = new FileReader();
-                
+        
                 reader.onload = function(){
                     var imgPreview = document.getElementById('novaImagemPreview');
-                    imgPreview.src = reader.result;
+                    imgPreview.src = reader.result; // Define a imagem de pré-visualização
                     imgPreview.style.display = 'block'; // Exibe a imagem
                 };
-            
+        
                 // Verifica se o arquivo foi selecionado
                 if (input.files && input.files[0]) {
-                    reader.readAsDataURL(input.files[0]);
+                    reader.readAsDataURL(input.files[0]); // Lê a imagem como uma URL
                 }
             }
-            </script>
+        </script>        
 
 <div th:replace="administrativo/shared_adm/footer"></div>   
 
