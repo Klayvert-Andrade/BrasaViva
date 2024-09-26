@@ -36,7 +36,9 @@
                                 <td th:text="${produto.preco}"></td>
                                 <td th:text="${produto.categoria}"></td>
                                 <td th:text="${produto.quantidadeEstoque}"></td>
-                                <td th:text="${produto.imagemUrl}"></td>
+                                <td>
+                                    <img th:src="@{${produto.imagemUrl}}" alt="Imagem do produto" class="img-thumbnail" width="200" height="100">
+                                </td>
 
                                   <!-- Botão Alterar -->
                                   <td>
