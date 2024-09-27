@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.SpringWeb.Fruitables.models.Cliente;
 import com.SpringWeb.Fruitables.repositorio.ClientesRepo;
@@ -28,15 +29,25 @@ public class ClientesController {
         return "administrativo/clientes/index";
     }
 
+    // Exibir formulário para criar um novo cliente
     @GetMapping("/clientes/novo")
     public String novo() {
         return "administrativo/clientes/novo";
     }
 
+    // Processar o formulário de criação de novo cliente
     @PostMapping("/clientes/criar")
     public String criar(Cliente cliente) {
         repo.save(cliente);
         return "redirect:/clientes";
+    }
+
+    // Processar o formulário de criação de novo cliente
+    @PostMapping("/checkout/criar")
+    public String criarCheckout(Cliente cliente, RedirectAttributes redirectAttributes) {
+        repo.save(cliente);
+        redirectAttributes.addFlashAttribute("mensagemSucesso", "Cliente cadastrado com sucesso!");
+        return "redirect:/checkout"; 
     }
 
     @GetMapping("/clientes/{id}/excluir")

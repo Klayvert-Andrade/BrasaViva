@@ -28,49 +28,34 @@
 <!-- Checkout and Login Page Start -->
 <div class="container-fluid py-5">
     <div class="container py-5">
-        <!-- Exibir a mensagem de sucesso se existir -->
-        <div th:if="${mensagemSucesso}" class="alert alert-success" role="alert" style="max-width: 400px; margin: 0 auto;">
-            <span th:text="${mensagemSucesso}"></span>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
         <div class="row g-5 d-flex align-items-start justify-content-between">
-            <!-- Formulário de Cadastro -->
+            <!-- Cadastro Section -->
             <div class="col-md-5">
                 <h2>Fazer Cadastro</h2>
-                <form action="/checkout/criar" method="POST" onsubmit="return confirm('Confirma a ação?')">
+                <form action="#" method="post">
                     <div class="form-item">
                         <label class="form-label my-3">Nome Completo<sup>*</sup></label>
-                        <input type="text" class="form-control" required name="nome" placeholder="Digite seu nome">
+                        <input type="text" class="form-control" required>
                     </div>
-
-                    <div class="form-item">
-                        <label class="form-label my-3">CPF<sup>*</sup></label>
-                        <input type="text" class="form-control" required id="cpf" name="cpf" placeholder="Digite o seu CPF">
-                    </div>
-
                     <div class="form-item">
                         <label class="form-label my-3">Estado<sup>*</sup></label>
-                        <input type="text" class="form-control" required id="estado" name="estado">
+                        <input type="text" class="form-control" required>
                     </div>
-
                     <div class="form-item">
                         <label class="form-label my-3">Cidade<sup>*</sup></label>
-                        <input type="text" class="form-control" required id="cidade" name="cidade">
+                        <input type="text" class="form-control" required>
                     </div>
-
                     <div class="form-item">
                         <label class="form-label my-3">Telefone<sup>*</sup></label>
-                        <input type="tel" class="form-control" required id="telefone" name="telefone" placeholder="Digite o seu telefone">
+                        <input type="tel" class="form-control" required>
                     </div>
-
                     <div class="form-item">
                         <label class="form-label my-3">Email<sup>*</sup></label>
-                        <input type="email" class="form-control" required id="email" name="email" placeholder="Digite o seu email">
+                        <input type="email" class="form-control" required>
                     </div>
-
                     <div class="form-item">
                         <label class="form-label my-3">Senha<sup>*</sup></label>
-                        <input type="password" class="form-control" required id="senha" name="senha" placeholder="Digite a sua senha">
+                        <input type="password" class="form-control" required>
                     </div>
                     <button type="submit" class="btn btn-primary mt-4">Cadastrar</button>
                 </form>

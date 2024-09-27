@@ -8,6 +8,6 @@ public class PagamentoController {
 
     @GetMapping("/checkout")
     public String showCheckout() {
-        return "pagamentos/checkout"; // Caminho para o template do checkout
+        return "pagamento/checkout"; // Caminho para o template do checkout
     }
 }

@@ -67,7 +67,7 @@
                                 
                                 <!-- Shipping dinâmico -->
                                 <div class="d-flex justify-content-between">
-                                    <h5 class="mb-0 me-4">Desconto:</h5>
+                                    <h5 class="mb-0 me-4">Frete:</h5>
                                     <div class="">
                                         <p class="mb-0" th:text="'Taxa Fixa: ' + ${shipping} + ' $'"></p>
                                     </div>
@@ -80,7 +80,27 @@
                                 <p class="mb-0 pe-4" th:text="${total} + ' R$'"></p>
                             </div>
                             
-                            <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button">Pagar</button>
+                            <!-- Verifica se o carrinho tem itens -->
+                            <div th:if="${#lists.isEmpty(cart.itens)}">
+                                <div class="alert alert-warning" role="alert">
+                                    Seu carrinho está vazio. Adicione produtos antes de finalizar a compra!
+                                </div>
+                                <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" 
+                                        type="button" 
+                                        disabled>
+                                    Finalizar Compra
+                                </button>
+                            </div>
+
+                            <!-- Se houver itens no carrinho, exibe o botão normalmente -->
+                            <div th:if="${not #lists.isEmpty(cart.itens)}">
+                                <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" 
+                                        type="button" 
+                                        onclick="window.location.href='/checkout';">
+                                    Finalizar Compra
+                                </button>
+                            </div>
+
                         </div>
                     </div>
                 </div>

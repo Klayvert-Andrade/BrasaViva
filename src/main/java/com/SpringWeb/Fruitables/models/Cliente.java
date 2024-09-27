@@ -29,6 +29,15 @@ public class Cliente {
     @Column(name = "cpf", length=20, nullable=false, unique=true) 
     private String cpf;
 
+    @Column(name = "estado", length=20, nullable=false) 
+    private String estado;
+
+    @Column(name = "cidade", length=20, nullable=false) 
+    private String cidade;
+
+    @Column(name = "telefone", length=20, nullable=false) 
+    private String telefone;
+
     public int getId() {
         return id;
     }
@@ -67,6 +76,30 @@ public class Cliente {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
 }
