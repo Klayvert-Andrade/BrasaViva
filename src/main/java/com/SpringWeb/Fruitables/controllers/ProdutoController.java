@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -132,39 +133,23 @@ public class ProdutoController {
         return "administrativo/produtos/lista";
     }   
 
-    // // Lista todos os produtos
-    // @GetMapping
-    // public ResponseEntity<List<Produto>> listarProdutos() {
-    //     List<Produto> produtos = produtoService.findAll();
-    //     return new ResponseEntity<>(produtos, HttpStatus.OK);
-    // }
+    // Filtrar produtos por categoria
+    @GetMapping("/produtos/filtrar")
+    public String filtrarProdutos(@RequestParam("categoria") String categoria, Model model) {
+        List<Produto> produtos;
 
-    // // Adiciona um novo produto
-    // @PostMapping
-    // public ResponseEntity<Produto> adicionarProduto(@RequestBody Produto produto) {
-    //     Produto produtoCriado = produtoService.adicionarProduto(produto);
-    //     return new ResponseEntity<>(produtoCriado, HttpStatus.CREATED);
-    // }
+        if (categoria.isEmpty()) {
+            // Caso a categoria esteja vazia, retorna todos os produtos
+            produtos = (List<Produto>) repo.findAll();
+        } else {
+            // Filtra os produtos pela categoria
+            produtos = ((List<Produto>) repo.findAll()).stream()
+                .filter(produto -> produto.getCategoria().equalsIgnoreCase(categoria))
+                .collect(Collectors.toList());
+        }
 
-    // // Atualiza um produto existente
-    // @PutMapping("/{id}")
-    // public ResponseEntity<Produto> atualizarProduto(@PathVariable int id, @RequestBody Produto produtoAtualizado) {
-    //     try {
-    //         Produto produto = produtoService.atualizarProduto(id, produtoAtualizado);
-    //         return new ResponseEntity<>(produto, HttpStatus.OK);
-    //     } catch (IllegalArgumentException e) {
-    //         return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-    //     }
-    // }
-
-    // // Remove um produto
-    // @DeleteMapping("/{id}")
-    // public ResponseEntity<Void> removerProduto(@PathVariable int id) {
-    //     try {
-    //         produtoService.removerProduto(id);
-    //         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    //     } catch (IllegalArgumentException e) {
-    //         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    //     }
-    // }
+        model.addAttribute("produtos", produtos);
+        // Retorna um fragmento de HTML para ser atualizado via AJAX
+        return "fragments/produtos :: produtosFiltrados";
+    }
 }

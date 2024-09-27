@@ -10,4 +10,9 @@ public class PagamentoController {
     public String showCheckout() {
         return "pagamento/checkout"; // Caminho para o template do checkout
     }
+
+    @GetMapping("/pagamento")
+    public String pagamento() {
+        return "pagamento/pagamento"; // Caminho para o template do checkout
+    }
 }
