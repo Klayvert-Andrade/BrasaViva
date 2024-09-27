@@ -21,6 +21,11 @@ public class LoginController {
         return "login/index";
     }
 
+    @GetMapping("/register")
+    public String register() {
+        return "login/register";
+    }
+
     @PostMapping("/logar")
     public String logar(Model model, Administrador admParam, String lembrar, HttpServletResponse response) {
         Administrador adm = this.repo.Login(admParam.getEmail(), admParam.getSenha());

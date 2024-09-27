@@ -22,14 +22,17 @@
                         </thead>
                         <tbody>
                             <tr th:each="item : ${cart.itens}">
-                                <td><img th:src="@{/img/[[${item.produto.imagemUrl}]]}" style="width: 80px; height: 80px;" alt="Imagem do produto"></td>
+                                <td>
+                                    <img th:src="@{${item.produto.imagemUrl}}" alt="Imagem do produto" class="img-thumbnail" style="width: 80px; height: 80px;">
+                                </td>
+                                
                                 <td><p th:text="${item.produto.nome}"></p></td>
                                 <td><p th:text="${item.produto.preco} + ' $'"></p></td>
                                 <td>
                                     <form action="/carrinho/update" method="post">
                                         <input type="hidden" name="produtoId" th:value="${item.produto.id}">
                                         <div class="input-group">
-                                            <input type="number" name="quantidade" th:value="${item.quantidade}" class="form-control">
+                                            <input type="number" name="quantidade" th:value="${item.quantidade}" class="form-control" min="1">
                                             <button type="submit" class="btn btn-sm btn-plus">Alterar</button>
                                         </div>
                                     </form>

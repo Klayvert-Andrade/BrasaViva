@@ -70,4 +70,6 @@ public class ItemCarrinho {
     public double getTotal() {
         return produto.getPreco() * quantidade;
     }
+
+    
 }

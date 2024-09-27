@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.SpringWeb.Fruitables.models.Carrinho;
 import com.SpringWeb.Fruitables.services.CarrinhoService;
+
 @Controller
 @RequestMapping("/carrinho")
 public class CarrinhoController {
@@ -23,12 +24,12 @@ public class CarrinhoController {
     public String showCart(Model model) {
         Carrinho carrinho = carrinhoService.getCarrinhoFromSession(); // Obter o carrinho da sessão
         double shipping = 3.00;
-        model.addAttribute("cart", carrinho); // Use "cart" para casar com o que é esperado no HTML
+        model.addAttribute("cart", carrinho);
         model.addAttribute("subtotal", carrinhoService.calcularTotal());
         model.addAttribute("shipping", shipping);
         model.addAttribute("total", carrinhoService.calcularTotal() + shipping); // Total para exibir o preço total
         model.addAttribute("quantidadeItens", carrinhoService.contarItensNoCarrinho()); // Adiciona a quantidade de itens ao modelo
-        return "carrinho/index"; // Página do carrinho
+        return "carrinho/index"; 
     }
 
     // Adiciona um produto ao carrinho e redireciona para a página do carrinho
@@ -44,6 +45,9 @@ public class CarrinhoController {
                                       @RequestParam("quantidade") int quantidade, Model model) {
         // Atualiza a quantidade do produto no carrinho
         carrinhoService.atualizarQuantidadeNoCarrinho(produtoId, quantidade);
+
+        Carrinho carrinho = carrinhoService.getCarrinhoFromSession();
+        model.addAttribute("cart", carrinho);
         
         // Redireciona de volta para a página do carrinho
         return "redirect:/carrinho";
