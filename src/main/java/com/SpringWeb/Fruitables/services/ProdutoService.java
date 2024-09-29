@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -67,4 +68,26 @@ public class ProdutoService {
     public List<Produto> findByCategoria(String categoria) {
         return produtoRepo.findByCategoria(categoria);
     }
+
+    public List<Produto> buscarPorNome(String nome) {
+        return produtoRepo.findByNomeContainingIgnoreCase(nome);
+    }
+
+    public List<Produto> listarProdutosOrdenadosPorPrecoAsc() {
+        return produtoRepo.findAll(Sort.by(Sort.Direction.ASC, "preco"));
+    }
+
+    public List<Produto> listarProdutosOrdenadosPorPrecoDesc() {
+        return produtoRepo.findAll(Sort.by(Sort.Direction.DESC, "preco"));
+    }
+    
+    public List<Produto> listarProdutosOrdenadosPorNomeAsc() {
+        return produtoRepo.findAll(Sort.by(Sort.Direction.ASC, "nome"));
+    }
+    
+    public List<Produto> listarProdutosOrdenadosPorNomeDesc() {
+        return produtoRepo.findAll(Sort.by(Sort.Direction.DESC, "nome"));
+    }
+
+    
 }

@@ -12,5 +12,6 @@ import com.SpringWeb.Fruitables.models.Produto;
 public interface ProdutoRepo extends JpaRepository<Produto, Integer> {
     // Método customizado para buscar produtos por categoria
     List<Produto> findByCategoria(String categoria);
+    List<Produto> findByNomeContainingIgnoreCase(String nome);
 }
 

@@ -17,12 +17,16 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.SpringWeb.Fruitables.models.Produto;
 import com.SpringWeb.Fruitables.repositorio.ProdutoRepo;
+import com.SpringWeb.Fruitables.services.ProdutoService;
 
 @Controller
 public class ProdutoController {
 
     @Autowired
     private ProdutoRepo repo;
+
+    @Autowired
+    private ProdutoService produtoService;
 
     // listar todos os produtos
     @GetMapping("/produtos")
@@ -31,6 +35,34 @@ public class ProdutoController {
         model.addAttribute("produtos", produtos);  // Adiciona os produtos ao modelo para serem exibidos na view
         
         return "administrativo/produtos/index"; // Retorna o template que exibirá a lista de produtos
+    }
+
+    @GetMapping("/produtos/listar")
+    public String listarProdutos(@RequestParam(required = false, defaultValue = "padrao") String ordenar, Model model) {
+        List<Produto> produtos;
+
+        switch (ordenar) {
+            case "preco_asc":
+                produtos = produtoService.listarProdutosOrdenadosPorPrecoAsc();
+                break;
+            case "preco_desc":
+                produtos = produtoService.listarProdutosOrdenadosPorPrecoDesc();
+                break;
+            case "nome_asc":
+                produtos = produtoService.listarProdutosOrdenadosPorNomeAsc();
+                break;
+            case "nome_desc":
+                produtos = produtoService.listarProdutosOrdenadosPorNomeDesc();
+                break;
+            case "padrao":
+            default:
+                produtos = produtoService.findAll(); // Padrão: sem ordenação
+                break;
+        }
+
+        model.addAttribute("produtos", produtos);
+    
+        return "fragments/produtos :: produtosFiltrados"; // Retorna a lista de produtos
     }
 
     // Exibir formulário para criar um novo produto
@@ -48,7 +80,6 @@ public class ProdutoController {
                 // Define o caminho onde a imagem será salva
                 String caminho = new File("src/main/resources/static/img/" + imagem.getOriginalFilename()).getAbsolutePath();
 
-                
                 // Salva o arquivo na pasta especificada
                 File destino = new File(caminho);
                 imagem.transferTo(destino);
@@ -151,5 +182,12 @@ public class ProdutoController {
         model.addAttribute("produtos", produtos);
         // Retorna um fragmento de HTML para ser atualizado via AJAX
         return "fragments/produtos :: produtosFiltrados";
+    }
+
+    @GetMapping("/produtos/buscar")
+    public String buscarProdutos(@RequestParam String nome, Model model) {
+        List<Produto> produtosFiltrados = produtoService.buscarPorNome(nome);
+        model.addAttribute("produtos", produtosFiltrados);
+        return "fragments/produtos :: produtosFiltrados"; // Certifique-se de que o nome do fragmento está correto
     }
 }
