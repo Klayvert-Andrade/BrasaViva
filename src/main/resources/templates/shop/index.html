@@ -1,3 +1,4 @@
+<html xmlns:th="http://www.thymeleaf.org">
 <div th:replace="shared/header"></div>
         <!-- Single Page Header start -->
         <div class="container-fluid page-header py-5">
@@ -52,32 +53,32 @@
                                                 </li>
                                                 <li>
                                                     <div class="d-flex justify-content-between fruite-name">
-                                                        <a href="#" class="text-decoration-none" id="btn-vegetais">
-                                                            <i class="fas fa-apple-alt me-2"></i>Vegetais
+                                                        <a href="#" class="text-decoration-none" id="btn-carnes">
+                                                            <i class="fas fa-apple-alt me-2"></i>Carnes
                                                         </a>
                                                         <span>(5)</span>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="d-flex justify-content-between fruite-name">
-                                                        <a href="#" class="text-decoration-none" id="btn-frutas">
-                                                            <i class="fas fa-apple-alt me-2"></i>Frutas
+                                                        <a href="#" class="text-decoration-none" id="btn-acompanhamentos">
+                                                            <i class="fas fa-apple-alt me-2"></i>Acompanhamentos
                                                         </a>
                                                         <span>(2)</span>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="d-flex justify-content-between fruite-name">
-                                                        <a href="#" class="text-decoration-none" id="btn-paes">
-                                                            <i class="fas fa-apple-alt me-2"></i>Pães
+                                                        <a href="#" class="text-decoration-none" id="btn-bebidas">
+                                                            <i class="fas fa-apple-alt me-2"></i>Bebidas
                                                         </a>
                                                         <span>(8)</span>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="d-flex justify-content-between fruite-name">
-                                                        <a href="#" class="text-decoration-none" id="btn-comida">
-                                                            <i class="fas fa-apple-alt me-2"></i>Comida
+                                                        <a href="#" class="text-decoration-none" id="btn-molhos">
+                                                            <i class="fas fa-apple-alt me-2"></i>Molhos
                                                         </a>
                                                         <span>(5)</span>
                                                     </div>
@@ -190,21 +191,21 @@
                 event.preventDefault();
                 filtrarProdutos('');
             });
-            document.getElementById('btn-vegetais').addEventListener('click', function(event) {
+            document.getElementById('btn-carnes').addEventListener('click', function(event) {
                 event.preventDefault();
-                filtrarProdutos('Vegetais');
+                filtrarProdutos('Carnes');
             });
-            document.getElementById('btn-frutas').addEventListener('click', function(event) {
+            document.getElementById('btn-acompanhamentos').addEventListener('click', function(event) {
                 event.preventDefault();
-                filtrarProdutos('Frutas');
+                filtrarProdutos('Acompanhamentos');
             });
-            document.getElementById('btn-paes').addEventListener('click', function(event) {
+            document.getElementById('btn-bebidas').addEventListener('click', function(event) {
                 event.preventDefault();
-                filtrarProdutos('Pães');
+                filtrarProdutos('Bebidas');
             });
-            document.getElementById('btn-comida').addEventListener('click', function(event) {
+            document.getElementById('btn-molhos').addEventListener('click', function(event) {
                 event.preventDefault();
-                filtrarProdutos('Comida');
+                filtrarProdutos('Molhos');
             });
         </script>
 

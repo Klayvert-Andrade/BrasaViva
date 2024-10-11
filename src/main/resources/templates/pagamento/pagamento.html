@@ -1,6 +1,14 @@
 <div th:replace="shared/header"></div>
 
 <div class="container">
+    <!-- Mensagens de erro ou sucesso -->
+    <div th:if="${mensagem}" class="alert alert-success">
+        <span th:text="${mensagem}"></span>
+    </div>
+    <div th:if="${erro}" class="alert alert-danger">
+        <span th:text="${erro}"></span>
+    </div>
+
     <!-- Tabela de Itens do Carrinho -->
     <div class="table-responsive">
         <table class="table">
@@ -36,11 +44,15 @@
         <div class="col-md-6">
             <div class="d-flex justify-content-between py-3 border-bottom">
                 <h5 class="mb-0">Subtotal</h5>
-                <h5 class="mb-0" th:text="${carrinho.total}"></h5>
+                <h5 class="mb-0" th:text="${subtotal}"></h5> <!-- Corrigido para usar subtotal -->
+            </div>
+            <div class="d-flex justify-content-between py-3 border-bottom">
+                <h5 class="mb-0">Frete</h5>
+                <h5 class="mb-0" th:text="${shipping}"></h5> <!-- Adicionado frete -->
             </div>
             <div class="d-flex justify-content-between py-3 border-bottom">
                 <h5 class="mb-0">Total</h5>
-                <h5 class="mb-0" th:text="${carrinho.total}"></h5>
+                <h5 class="mb-0" th:text="${total}"></h5> <!-- Corrigido para usar total -->
             </div>
         </div>
     </div>

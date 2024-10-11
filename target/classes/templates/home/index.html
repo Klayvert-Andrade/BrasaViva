@@ -1,3 +1,4 @@
+<html xmlns:th="http://www.thymeleaf.org">
 <div th:replace="shared/header"></div>
          <!-- Hero Start -->
          <div class="container-fluid py-5 mb-5 hero-header">
@@ -49,27 +50,27 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a id="btn-vegetais" class="d-flex py-2 m-2 bg-light rounded-pill" 
-                                onclick="filtrarProdutos('Vegetais')" style="cursor: pointer;">
-                                    <span class="text-dark" style="width: 130px;">Vegetais</span>
+                                <a id="btn-carnes" class="d-flex py-2 m-2 bg-light rounded-pill"
+                                onclick="filtrarProdutos('Carnes')" style="cursor: pointer;">
+                                    <span class="text-dark" style="width: 130px;">Carnes</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a id="btn-frutas" class="d-flex m-2 py-2 bg-light rounded-pill" 
-                                onclick="filtrarProdutos('Frutas')" style="cursor: pointer;">
-                                    <span class="text-dark" style="width: 130px;">Frutas</span>
+                                <a id="btn-acompanhamentos" class="d-flex m-2 py-2 bg-light rounded-pill"
+                                onclick="filtrarProdutos('Acompanhamentos')" style="cursor: pointer;">
+                                    <span class="text-dark" style="width: 150px;">Acompanhamentos</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a id="btn-paes" class="d-flex m-2 py-2 bg-light rounded-pill" 
-                                onclick="filtrarProdutos('Pães')" style="cursor: pointer;">
-                                    <span class="text-dark" style="width: 130px;">Pães</span>
+                                <a id="btn-bebidas" class="d-flex m-2 py-2 bg-light rounded-pill"
+                                onclick="filtrarProdutos('Bebidas')" style="cursor: pointer;">
+                                    <span class="text-dark" style="width: 130px;">Bebidas</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a id="btn-comida" class="d-flex m-2 py-2 bg-light rounded-pill" 
-                                onclick="filtrarProdutos('Comida')" style="cursor: pointer;">
-                                    <span class="text-dark" style="width: 130px;">Comida</span>
+                                <a id="btn-molhos" class="d-flex m-2 py-2 bg-light rounded-pill"
+                                onclick="filtrarProdutos('Molhos')" style="cursor: pointer;">
+                                    <span class="text-dark" style="width: 130px;">Molhos</span>
                                 </a>
                             </li>
                         </ul>
@@ -77,37 +78,8 @@
 
                     <!-- Container Produtos -->
                     <div id="produtos-container">
-                        <!-- Conteúdo de produtos que será atualizado via AJAX -->
-                        <div class="row g-4">
-                            <div class="col-lg-12">
-                                <div class="row g-4">
-                                    <!-- Iteração sobre produtos filtrados -->
-                                    <div class="col-md-6 col-lg-4 col-xl-3" th:each="produto : ${produtos}">
-                                        <div class="rounded position-relative fruite-item">
-                                            <div class="fruite-img">
-                                                <img th:src="@{${produto.imagemUrl}}" class="img-fluid w-100 rounded-top" alt="Imagem do Produto">
-                                            </div>
-                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;" 
-                                                th:text="${produto.categoria}"></div>
-                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                <h4 th:text="${produto.nome}"></h4>
-                                                <p th:text="${produto.descricao}"></p>
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <p class="text-dark fs-5 fw-bold mb-0" th:text="'R$ ' + ${#numbers.formatDecimal(produto.preco, 1, 'COMMA', 2, 'POINT')} + ' / kg'"></p>
-
-                                                    <!-- Botão para adicionar ao carrinho -->
-                                                    <a class="btn border border-secondary rounded-pill px-3 text-primary" 
-                                                        th:href="@{/carrinho/adicionarCarrinho/{id}(id=${produto.id})}">
-                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i> Carrinho
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Fim da iteração -->
-                                </div>
-                            </div>
-                        </div>
+                        <!-- Inserir o fragmento de produtos -->
+                        <div th:replace="fragments/produtos :: produtosFiltrados"></div>
                     </div>
                 </div>
             </div>
@@ -430,17 +402,17 @@
             document.getElementById('btn-todos').addEventListener('click', function() {
                 filtrarProdutos('');
             });
-            document.getElementById('btn-vegetais').addEventListener('click', function() {
-                filtrarProdutos('Vegetais');
+            document.getElementById('btn-carnes').addEventListener('click', function() {
+                filtrarProdutos('Carnes');
             });
-            document.getElementById('btn-frutas').addEventListener('click', function() {
-                filtrarProdutos('Frutas');
+            document.getElementById('btn-acompanhamentos').addEventListener('click', function() {
+                filtrarProdutos('Acompanhamentos');
             });
-            document.getElementById('btn-paes').addEventListener('click', function() {
-                filtrarProdutos('Pães');
+            document.getElementById('btn-bebidas').addEventListener('click', function() {
+                filtrarProdutos('Bebidas');
             });
-            document.getElementById('btn-comida').addEventListener('click', function() {
-                filtrarProdutos('Comida');
+            document.getElementById('btn-molhos').addEventListener('click', function() {
+                filtrarProdutos('Molhos');
             });
         </script> 
     <div th:replace="shared/footer"></div>   
