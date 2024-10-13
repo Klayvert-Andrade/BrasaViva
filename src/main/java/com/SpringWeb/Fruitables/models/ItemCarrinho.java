@@ -24,15 +24,20 @@ public class ItemCarrinho {
     @JoinColumn(name = "carrinho_id")
     private Carrinho carrinho;
 
+    @ManyToOne
+    @JoinColumn(name = "venda_id", nullable = true)  // Adicionando o campo 'venda'
+    private Venda venda;
+
     private int quantidade;
 
     public ItemCarrinho() {
     }
 
-    public ItemCarrinho(Produto produto, int quantidade, Carrinho carrinho) {
+    public ItemCarrinho(Produto produto, Carrinho carrinho, Venda venda, int quantidade) {
         this.produto = produto;
-        this.quantidade = quantidade;
         this.carrinho = carrinho;
+        this.venda = venda;
+        this.quantidade = quantidade;
     }
 
     public int getId() {
@@ -69,6 +74,14 @@ public class ItemCarrinho {
 
     public double getTotal() {
         return produto.getPreco() * quantidade;
+    }
+
+    public Venda getVenda() {
+        return venda;
+    }
+
+    public void setVenda(Venda venda) {
+        this.venda = venda;
     }
 
     

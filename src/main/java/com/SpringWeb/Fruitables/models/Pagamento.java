@@ -7,7 +7,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -17,7 +16,6 @@ public class Pagamento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
 
     @Column(name = "metodo_pagamento", length = 50, nullable = false)
@@ -29,22 +27,16 @@ public class Pagamento {
     @Column(name = "data_pagamento", nullable = false)
     private LocalDateTime dataPagamento;
 
-    @Column(name = "status_pagamento", length = 50, nullable = false)
-    private String status; // Pendente, Completo, Falha
-
-    @OneToOne
-    @JoinColumn(name = "carrinho_id", nullable = false)
-    private Carrinho carrinho; // Relacionamento com o Carrinho
-
+    @OneToOne(mappedBy = "pagamento")
+    private Venda venda;
+    
     // Construtores
     public Pagamento() {}
 
-    public Pagamento(String metodoPagamento, Double valorTotal, Carrinho carrinho) {
+    public Pagamento(String metodoPagamento, Double valorTotal) {
         this.metodoPagamento = metodoPagamento;
         this.valorTotal = valorTotal;
         this.dataPagamento = LocalDateTime.now();
-        this.status = "Pendente"; // Inicialmente como "Pendente"
-        this.carrinho = carrinho;
     }
 
     // Getters e Setters
@@ -80,19 +72,11 @@ public class Pagamento {
         this.dataPagamento = dataPagamento;
     }
 
-    public String getStatus() {
-        return status;
+    public Venda getVenda() {
+        return venda;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Carrinho getCarrinho() {
-        return carrinho;
-    }
-
-    public void setCarrinho(Carrinho carrinho) {
-        this.carrinho = carrinho;
+    public void setVenda(Venda venda) {
+        this.venda = venda;
     }
 }

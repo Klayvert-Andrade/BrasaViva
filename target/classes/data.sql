@@ -26,7 +26,7 @@ VALUES
     -- Carnes
     ('Picanha', 'Picanha grelhada no ponto ideal', 79.90, 'Carnes', '/imagens/picanha.jpg', 50),
     ('Maminha', 'Maminha suculenta assada na brasa', 64.90, 'Carnes', '/imagens/maminha.jpg', 50),
-    ('Fraldinha', 'Fraldinha macia e saborosa', 69.90, 'Carnes', '/imagens/fraldinha.jpg', 50),
+    ('Fraldinha', 'Fraldinha macia e saborosa', 69.90, 'Carnes', '/img/fraldinha.jpg', 50),
     ('Costela', 'Costela bovina assada lentamente', 74.90, 'Carnes', '/img/costela.jpg', 50),
     ('Alcatra', 'Alcatra grelhada no espeto', 59.90, 'Carnes', '/imagens/alcatra.jpg', 50),
     ('Cupim', 'Cupim com toque de ervas finas', 72.90, 'Carnes', '/imagens/cupim.jpg', 50),
@@ -37,7 +37,7 @@ VALUES
     ('Tilápia', 'Tilápia grelhada ao molho de ervas', 49.90, 'Carnes', '/imagens/tilapia.jpg', 50),
 
     -- Acompanhamentos
-    ('Arroz', 'Arroz branco soltinho', 9.90, 'Acompanhamentos', '/imagens/arroz.jpg', 100),
+    ('Arroz', 'Arroz branco soltinho', 9.90, 'Acompanhamentos', '/img/arroz.jpg', 100),
     ('Feijão Tropeiro', 'Feijão tropeiro com bacon e farinha de mandioca', 14.90, 'Acompanhamentos', '/imagens/feijao_tropeiro.jpg', 100),
     ('Farofa', 'Farofa crocante com bacon', 12.90, 'Acompanhamentos', '/imagens/farofa.jpg', 100),
     ('Batata Frita', 'Batata frita crocante', 15.90, 'Acompanhamentos', '/imagens/batata_frita.jpg', 100),
