@@ -313,14 +313,20 @@
     overflow: hidden;
     transition: 0.5s;
     border-radius: 10px 10px 0 0;
+    width: 100%; /* Garante que a largura da imagem ocupe todo o espaço do contêiner */
+    height: 250px; /* Define uma altura fixa */
+    background-color: #f0f0f0; 
 }
 
 .fruite .fruite-item .fruite-img img {
+    width: 100%; /* Garante que a imagem ocupe 100% da largura disponível */
+    height: 100%; /* Garante que a imagem ocupe 100% da altura do contêiner */
+    object-fit: cover; /* Mantém a proporção da imagem e preenche o contêiner */
     transition: 0.5s;
 }
 
 .fruite .fruite-item .fruite-img img:hover {
-    transform: scale(1.3);
+    transform: scale(1.3); /*efeito de zoom*/
 }
 /*** Fruits End ***/
 

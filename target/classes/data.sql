@@ -25,8 +25,8 @@ INSERT INTO produtos (nome, descricao, preco, categoria, imagem_url, quantidade_
 VALUES
 
     -- Carnes
-    ('Picanha', 'Picanha grelhada no ponto ideal', 79.90, 'Carnes', '/imagens/picanha.jpg', 50),
-    ('Maminha', 'Maminha suculenta assada na brasa', 64.90, 'Carnes', '/imagens/maminha.jpg', 50),
+    ('Picanha', 'Picanha grelhada no ponto ideal', 79.90, 'Carnes', '/img/picanha.jpeg', 50),
+    ('Maminha', 'Maminha suculenta assada na brasa', 64.90, 'Carnes', '/img/maminha.jpg', 50),
     ('Fraldinha', 'Fraldinha macia e saborosa', 69.90, 'Carnes', '/img/fraldinha.jpg', 50),
     ('Costela', 'Costela bovina assada lentamente', 74.90, 'Carnes', '/img/costela.jpg', 50),
     ('Alcatra', 'Alcatra grelhada no espeto', 59.90, 'Carnes', '/imagens/alcatra.jpg', 50),

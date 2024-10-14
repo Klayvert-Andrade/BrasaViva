@@ -13,8 +13,10 @@
                     <div class="col-md-6 col-lg-4 col-xl-4" th:each="produto : ${produtos}">
                         <div class="rounded position-relative fruite-item">
                             <div class="fruite-img">
-                                <img th:src="@{${produto.imagemUrl}}" class="img-fluid w-100 rounded-top" alt="Imagem do Produto">
-                            </div>
+                                <img th:src="${produto.imagemUrl != null and !produto.imagemUrl.isEmpty() ? produto.imagemUrl : '/img/placeholder.png'}" 
+                                    class="img-fluid w-100 rounded-top" 
+                                    alt="Imagem do Produto">
+                                </div>
                             <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
                                 style="top: 10px; left: 10px;" 
                                 th:text="${produto.categoria}">
