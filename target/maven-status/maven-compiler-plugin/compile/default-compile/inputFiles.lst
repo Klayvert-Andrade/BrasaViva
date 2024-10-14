@@ -5,7 +5,8 @@ C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\controllers\Cl
 C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\controllers\ContatoController.java
 C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\controllers\EstoqueController.java
 C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\controllers\HomeController.java
-C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\controllers\LoginController.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\controllers\LoginAdmController.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\controllers\LoginClienteController.java
 C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\controllers\PagamentoController.java
 C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\controllers\ProdutoController.java
 C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\controllers\ShopController.java

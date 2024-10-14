@@ -11,7 +11,8 @@ ON DUPLICATE KEY UPDATE
 INSERT INTO clientes (nome, email, senha, cpf, estado, cidade, telefone)
 VALUES
     ('Carlos Souza', 'carlos.souza@example.com', 'senhaCarlos789', '321.654.987-00', 'São Paulo', 'São Paulo', '(11) 91234-5678'),
-    ('Ana Santos', 'ana.santos@example.com', 'senhaAna654', '456.789.123-00', 'Rio de Janeiro', 'Rio de Janeiro', '(21) 92345-6789')
+    ('Ana Santos', 'ana.santos@example.com', 'senhaAna654', '456.789.123-00', 'Rio de Janeiro', 'Rio de Janeiro', '(21) 92345-6789'),
+    ('Klayvert', 'klay@gmail.com', '123', '165.227.176.70', 'Paraíba', 'João Pessoa', '(31) 97360-9900')
 ON DUPLICATE KEY UPDATE
     nome = VALUES(nome),
     email = VALUES(email),

@@ -11,6 +11,6 @@ public interface ClientesRepo extends CrudRepository<Cliente, Integer>{
     public boolean exist(int id);
 
     @Query(value="select * from clientes where email = :email and senha = :senha", nativeQuery = true)
-    public Cliente Login(String email, String senha);
+    public Cliente login(String email, String senha);
     
 }

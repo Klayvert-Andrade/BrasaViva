@@ -1,6 +1,5 @@
 com\SpringWeb\Fruitables\controllers\ProdutoController.class
 com\SpringWeb\Fruitables\models\Administrador.class
-com\SpringWeb\Fruitables\controllers\LoginController.class
 com\SpringWeb\Fruitables\controllers\EstoqueController.class
 com\SpringWeb\Fruitables\services\PagamentoService.class
 com\SpringWeb\Fruitables\services\ProdutoService.class

@@ -14,6 +14,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.SpringWeb.Fruitables.models.Cliente;
 import com.SpringWeb.Fruitables.repositorio.ClientesRepo;
 
+import jakarta.servlet.http.HttpSession;
+
 
 @Controller
 public class ClientesController {
@@ -87,7 +89,26 @@ public class ClientesController {
         return "administrativo/clientes/lista";
     }  
 
-    
+    @GetMapping("/perfil")
+    public String perfil(Model model, HttpSession session) {
+        Cliente cliente = (Cliente) session.getAttribute("cliente");
+        if (cliente == null) {
+            return "redirect:/login_cliente";
+        }
+        model.addAttribute("cliente", cliente);
+        return "cliente/perfil";
+    }
+
+    // @GetMapping("/compras")
+    // public String registroDeCompras(Model model, HttpSession session) {
+    //     Cliente cliente = (Cliente) session.getAttribute("cliente");
+    //     if (cliente == null) {
+    //         return "redirect:/login_cliente";
+    //     }
+    //     // Aqui você pode buscar o histórico de compras do cliente
+    //     model.addAttribute("compras", cliente.getCompras());
+    //     return "cliente/compras";
+    // }
         
 } 
 
