@@ -22,6 +22,8 @@ public class Carrinho {
     @OneToMany(mappedBy = "carrinho", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItemCarrinho> itens = new ArrayList<>();
 
+    public Carrinho() {}
+
     public int getId() {
         return id;
     }
@@ -45,7 +47,7 @@ public class Carrinho {
                 return;
             }
         }
-        itens.add(new ItemCarrinho(produto, quantidade, this));
+        itens.add(new ItemCarrinho(produto, this, quantidade));
     }
 
     public void removerProduto(Produto produto) {

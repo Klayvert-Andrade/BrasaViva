@@ -1,5 +1,7 @@
 package com.SpringWeb.Fruitables.models;
 
+import java.util.Objects;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,13 +32,12 @@ public class ItemCarrinho {
 
     private int quantidade;
 
-    public ItemCarrinho() {
-    }
+    public ItemCarrinho() {}
 
-    public ItemCarrinho(Produto produto, Carrinho carrinho, Venda venda, int quantidade) {
+    // Construtor utilizado ao adicionar itens no carrinho (a venda pode ser nula inicialmente)
+    public ItemCarrinho(Produto produto, Carrinho carrinho, int quantidade) {
         this.produto = produto;
         this.carrinho = carrinho;
-        this.venda = venda;
         this.quantidade = quantidade;
     }
 
@@ -84,5 +85,18 @@ public class ItemCarrinho {
         this.venda = venda;
     }
 
-    
+     // Sobrescrevendo equals() e hashCode() para garantir que a comparação seja baseada no ID
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ItemCarrinho that = (ItemCarrinho) o;
+        return id == that.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
 }
