@@ -99,16 +99,7 @@ public class ClientesController {
         return "cliente/perfil";
     }
 
-    // @GetMapping("/compras")
-    // public String registroDeCompras(Model model, HttpSession session) {
-    //     Cliente cliente = (Cliente) session.getAttribute("cliente");
-    //     if (cliente == null) {
-    //         return "redirect:/login_cliente";
-    //     }
-    //     // Aqui você pode buscar o histórico de compras do cliente
-    //     model.addAttribute("compras", cliente.getCompras());
-    //     return "cliente/compras";
-    // }
+    
         
 } 
 

@@ -41,7 +41,6 @@ public class LoginClienteController {
         }
     }
 
-
     @GetMapping("/logout")
     public String logoutCliente(HttpSession session) {
         session.invalidate();

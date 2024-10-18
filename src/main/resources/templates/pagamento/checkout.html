@@ -90,14 +90,14 @@
             <!-- Login Section -->
             <div class="col-md-5">
                 <h2>Já sou cliente!</h2>
-                <form action="/login" method="post">
+                <form action="/logar_cliente" method="post">
                     <div class="form-item">
-                        <label class="form-label my-3">CPF ou Email<sup>*</sup></label>
-                        <input type="text" class="form-control" name="identifier" placeholder="CPF ou Email" required>
+                        <label class="form-label my-3">Email<sup>*</sup></label>
+                        <input type="text" class="form-control" name="email" placeholder="Email" required> <!-- Altere identifier para email -->
                     </div>
                     <div class="form-item">
                         <label class="form-label my-3">Senha<sup>*</sup></label>
-                        <input type="password" class="form-control" name="password" required>
+                        <input type="password" class="form-control" name="senha" required> <!-- Altere password para senha -->
                     </div>
                     <button type="submit" class="btn btn-primary mt-4">Login</button>
                 </form>
