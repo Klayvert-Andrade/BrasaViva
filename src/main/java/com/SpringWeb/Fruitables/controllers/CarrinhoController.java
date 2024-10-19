@@ -41,8 +41,7 @@ public class CarrinhoController {
 
     // Atualiza a quantidade de um produto no carrinho
     @PostMapping("/update")
-    public String atualizarQuantidade(@RequestParam("produtoId") int produtoId,
-                                      @RequestParam("quantidade") int quantidade, Model model) {
+    public String atualizarQuantidade(@RequestParam("produtoId") int produtoId, @RequestParam("quantidade") int quantidade, Model model) {
         // Atualiza a quantidade do produto no carrinho
         carrinhoService.atualizarQuantidadeNoCarrinho(produtoId, quantidade);
 
