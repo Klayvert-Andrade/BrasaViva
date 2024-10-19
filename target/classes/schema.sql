@@ -45,25 +45,16 @@ CREATE TABLE IF NOT EXISTS estoque (
     CONSTRAINT fk_estoque_produto FOREIGN KEY (produto_id) REFERENCES produtos(id)
 );
 
-
--- Criação da tabela pagamentos (relacionada à tabela de vendas)
-CREATE TABLE IF NOT EXISTS pagamentos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    metodo_pagamento VARCHAR(50) NOT NULL,
-    valor_total DOUBLE NOT NULL,
-    data_pagamento DATETIME NOT NULL
-);
-
 -- Criação da tabela vendas
 CREATE TABLE IF NOT EXISTS vendas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     cliente_id INT NOT NULL,
     administrador_id INT NOT NULL,
     valor_total DECIMAL(10, 2) NOT NULL,
-    pagamento_id INT,
+    metodo_pagamento VARCHAR(50),
+    data_venda DATETIME DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_venda_cliente FOREIGN KEY (cliente_id) REFERENCES clientes(id),
-    CONSTRAINT fk_venda_administrador FOREIGN KEY (administrador_id) REFERENCES administradores(id),
-    CONSTRAINT fk_venda_pagamento FOREIGN KEY (pagamento_id) REFERENCES pagamentos(id)
+    CONSTRAINT fk_venda_administrador FOREIGN KEY (administrador_id) REFERENCES administradores(id)
 );
 
 -- Criação da tabela item_carrinho (relacionada às tabelas produtos e carrinho)

@@ -1,4 +1,6 @@
 package com.SpringWeb.Fruitables.models;
+
+import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -10,13 +12,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "vendas")
 public class Venda {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -32,27 +35,32 @@ public class Venda {
     @Column(name = "valor_total", nullable = false)
     private double valorTotal;
 
-    @OneToOne
-    @JoinColumn(name = "pagamentos_id")
-    private Pagamento pagamento;
+    @Column(name = "metodo_pagamento")
+    private String metodoPagamento;
+
+    @Column(name = "data_venda", columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataVenda;
 
     @OneToMany(mappedBy = "venda", cascade = CascadeType.ALL)
     private List<ItemCarrinho> itens;
 
     public Venda() {}
 
-    public Venda(Cliente cliente, Administrador administrador, double valorTotal, Pagamento pagamento, List<ItemCarrinho> itens) {
+    public Venda(Cliente cliente, Administrador administrador, double valorTotal, String metodoPagamento, List<ItemCarrinho> itens) {
         this.cliente = cliente;
         this.administrador = administrador;
         this.valorTotal = valorTotal;
-        this.pagamento = pagamento;
+        this.metodoPagamento = metodoPagamento;
+        this.dataVenda = new Date(); // Define a data da venda como a data atual
         this.itens = itens;
     }
 
+    // Getters e Setters
     public int getId() {
         return id;
     }
-    
+
     public void setId(int id) {
         this.id = id;
     }
@@ -72,33 +80,36 @@ public class Venda {
     public void setAdministrador(Administrador administrador) {
         this.administrador = administrador;
     }
-    
-    public List<ItemCarrinho> getItens() {
-        return itens;
-    }
-    
-    public void setItens(List<ItemCarrinho> itens) {
-        this.itens = itens;
-    }
-    
+
     public double getValorTotal() {
         return valorTotal;
     }
-    
+
     public void setValorTotal(double valorTotal) {
         this.valorTotal = valorTotal;
     }
-    
-    public Pagamento getPagamento() {
-        return pagamento;
-    }
-    
-    public void setPagamento(Pagamento pagamento) {
-        this.pagamento = pagamento;
+
+    public String getMetodoPagamento() {
+        return metodoPagamento;
     }
 
+    public void setMetodoPagamento(String metodoPagamento) {
+        this.metodoPagamento = metodoPagamento;
+    }
 
+    public Date getDataVenda() {
+        return dataVenda;
+    }
 
-    // Getters e Setters
+    public void setDataVenda(Date dataVenda) {
+        this.dataVenda = dataVenda;
+    }
+
+    public List<ItemCarrinho> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<ItemCarrinho> itens) {
+        this.itens = itens;
+    }
 }
-

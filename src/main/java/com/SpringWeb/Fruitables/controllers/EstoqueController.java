@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.SpringWeb.Fruitables.models.Estoque;
 import com.SpringWeb.Fruitables.repositorio.EstoqueRepo;
 import com.SpringWeb.Fruitables.repositorio.ProdutoRepo;
-import com.SpringWeb.Fruitables.services.ProdutoService;
 
 @Controller
 @RequestMapping("/estoque")
@@ -23,9 +22,6 @@ public class EstoqueController {
 
     @Autowired
     private ProdutoRepo produtoRepo;
-
-    @Autowired
-    private ProdutoService produtoService;
 
     // Exibe todos os produtos com seus respectivos estoques
     @GetMapping("/listar")
