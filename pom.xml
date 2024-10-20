@@ -67,10 +67,14 @@
 	</dependencies>
 
 	<build>
+		<sourceDirectory>src/main/java</sourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>com.SpringWeb.Fruitables.FruitablesApplication</mainClass> <!-- Verifique se isso está correto -->
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
