@@ -17,7 +17,7 @@
                         <tr>
                             <th>ID Venda</th>
                             <th>Cliente</th>
-                            <th>Administrador</th>
+                            <th>Atendente</th>
                             <th>Data da Venda</th>
                             <th>Valor Total</th>
                             <th>Itens Vendidos</th>
@@ -30,11 +30,23 @@
                             <td th:text="${venda.administrador.nome}"></td>
                             <td th:text="${venda.dataVenda}"></td>
                             <td th:text="${venda.valorTotal}"></td>
-                            <!-- <td>
-                                <ul>
-                                    <li th:each="item : ${venda.itens}" th:text="${item.produto.nome} + ' - ' + ${item.quantidade} + ' - R$ ' + ${item.precoUnitario}"></li>
-                                </ul>
-                            </td> -->
+                            <td>
+                                <!-- Botão para mostrar itens da venda -->
+                                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" 
+                                        th:data-bs-target="'#itensVenda' + ${venda.id}" aria-expanded="false" 
+                                        th:aria-controls="'itensVenda' + ${venda.id}">
+                                    Mostrar Itens
+                                </button>
+                                
+                                <!-- Lista de itens escondida -->
+                                <div th:id="'itensVenda' + ${venda.id}" class="collapse mt-2">
+                                    <ul>
+                                        <li th:each="item : ${venda.itens}" 
+                                            th:text="${item.produto.nome} + ' - ' + ${item.quantidade} + ' - R$ ' + ${item.precoUnitario}">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

@@ -1,6 +1,5 @@
 package com.SpringWeb.Fruitables.services;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,7 +28,6 @@ public class VendaService {
         novaVenda.setAdministrador(administrador);
         novaVenda.setValorTotal(valorTotal);
         novaVenda.setMetodoPagamento(metodoPagamento);
-        novaVenda.setDataVenda(LocalDateTime.now());
         
         vendaRepo.save(novaVenda);
 
@@ -37,7 +35,7 @@ public class VendaService {
             .map(ItemCarrinho::getProduto)
             .collect(Collectors.toList());
 
-        itemVendaService.salvarItensVenda(novaVenda, cliente, administrador, produtosVendidos);
+        itemVendaService.salvarItensVenda(novaVenda, produtosVendidos);
     }
 
     public List<Venda> findAll() {

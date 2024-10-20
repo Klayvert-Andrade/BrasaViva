@@ -25,14 +25,6 @@ public class ItemVenda {
     @JoinColumn(name = "produto_id", nullable = false)
     private Produto produto;
 
-    @ManyToOne
-    @JoinColumn(name = "cliente_id", nullable = false)
-    private Cliente cliente;
-
-    @ManyToOne
-    @JoinColumn(name = "administrador_id", nullable = false)
-    private Administrador administrador;
-
     @Column(nullable = false)
     private int quantidade;
 
@@ -61,22 +53,6 @@ public class ItemVenda {
 
     public void setProduto(Produto produto) {
         this.produto = produto;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public Administrador getAdministrador() {
-        return administrador;
-    }
-
-    public void setAdministrador(Administrador administrador) {
-        this.administrador = administrador;
     }
 
     public int getQuantidade() {
