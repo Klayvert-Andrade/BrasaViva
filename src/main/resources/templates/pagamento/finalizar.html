@@ -8,44 +8,42 @@
 <!-- Cart Page Start -->
 <div class="container-fluid py-5">
     <div class="container py-5">
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Produto</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Preço</th>
-                    <th scope="col">Quantidade</th>
-                    <th scope="col">Total</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="item : ${cart.itens}">
-                        <td>
-                            <img th:src="@{${item.produto.imagemUrl}}" alt="Imagem do produto" class="img-thumbnail" style="width: 80px; height: 80px;">
-                        </td>
-                        <td><p th:text="${item.produto.nome}"></p></td>
-                        <td><p th:text="${item.produto.preco} + ' $'"></p></td>
-                        <td><p th:text="${item.quantidade}"></p></td>
-                        <td><p th:text="${item.total} + ' $'"></p></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="mt-5 row">
-            <!-- Campo e botão para Código de Vendedor -->
-            <div class="col-sm-6 d-flex">
-                <input type="text" class="form-control border-0 border-bottom me-2" placeholder="Código do Vendedor" name="sellerCode" required>
+        <form action="/pagamento/confirmar" method="POST" th:action="@{/pagamento/confirmar}">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Produto</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Preço</th>
+                        <th scope="col">Quantidade</th>
+                        <th scope="col">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="item : ${cart.itens}">
+                            <td>
+                                <img th:src="@{${item.produto.imagemUrl}}" alt="Imagem do produto" class="img-thumbnail" style="width: 80px; height: 80px;">
+                            </td>
+                            <td><p th:text="${item.produto.nome}"></p></td>
+                            <td><p th:text="${item.produto.preco} + ' $'"></p></td>
+                            <td><p th:text="${item.quantidade}"></p></td>
+                            <td><p th:text="${item.total} + ' $'"></p></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        </div>
 
-        <!-- Seção de Seleção do Método de Pagamento e Carrinho Total -->
-        <div class="row mt-5">
-            <!-- Métodos de Pagamento -->
-            <div class="col-md-6">
-                <h4 class="mb-4">Selecione o método de pagamento</h4>
-                <form action="/pagamento/confirmar" method="POST" th:action="@{/pagamento/confirmar}" th:object="${cart}">
+            <div class="mt-5 row">
+                <div class="col-sm-6 d-flex">
+                    <input type="text" class="form-control border-0 border-bottom me-2" placeholder="Código do Vendedor" name="sellerCode" required pattern="\d+">
+                </div>
+            </div>
+
+
+            <div class="row mt-5">
+                <div class="col-md-6">
+                    <h4 class="mb-4">Selecione o método de pagamento</h4>
                     <div class="form-check mb-3">
                         <input class="form-check-input" type="radio" name="metodoPagamento" id="pagamentoCartaoCredito" value="cartao_credito" required>
                         <label class="form-check-label" for="pagamentoCartaoCredito">
@@ -74,50 +72,33 @@
                             Berries
                         </label>
                     </div>
-            </div>
+                </div>
 
-            <!-- Carrinho Total -->
-            <div class="col-md-6">
-                <div class="bg-light rounded p-4">
-                    <h1 class="display-6 mb-4">Carrinho <span class="fw-normal">Total</span></h1>
-
-                    <!-- Subtotal dinâmico -->
-                    <div class="d-flex justify-content-between mb-4">
-                        <h5 class="mb-0">Subtotal:</h5>
-                        <p class="mb-0" th:text="${subtotal} + ' $'"></p>
-                    </div>
-
-                    <!-- Shipping dinâmico -->
-                    <div class="d-flex justify-content-between mb-4">
-                        <h5 class="mb-0">Frete:</h5>
-                        <p class="mb-0" th:text="'Taxa Fixa: ' + ${shipping} + ' $'"></p>
-                    </div>
-
-                    <!-- Total dinâmico -->
-                    <div class="d-flex justify-content-between mb-4 border-top pt-3">
-                        <h5 class="mb-0">Total</h5>
-                        <p class="mb-0" th:text="${total} + ' R$'"></p>
-                    </div>
-
-                    <!-- Botão de Finalizar -->
-                    <div th:if="${not #lists.isEmpty(cart.itens)}">
-                        <button type="submit" class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase w-100">
-                            Finalizar Compra
-                        </button>
-                    </div>
-                    <div th:if="${#lists.isEmpty(cart.itens)}">
-                        <div class="alert alert-warning" role="alert">
-                            Seu carrinho está vazio. Adicione produtos antes de finalizar a compra!
+                <div class="col-md-6">
+                    <div class="bg-light rounded p-4">
+                        <h1 class="display-6 mb-4">Carrinho <span class="fw-normal">Total</span></h1>
+                        <div class="d-flex justify-content-between mb-4">
+                            <h5 class="mb-0">Subtotal:</h5>
+                            <p class="mb-0" th:text="${subtotal} + ' $'"></p>
                         </div>
-                        <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase w-100" disabled>
+                        <div class="d-flex justify-content-between mb-4">
+                            <h5 class="mb-0">Frete:</h5>
+                            <p class="mb-0" th:text="'Taxa Fixa: ' + ${shipping} + ' $'"></p>
+                        </div>
+                        <div class="d-flex justify-content-between mb-4 border-top pt-3">
+                            <h5 class="mb-0">Total</h5>
+                            <p class="mb-0" th:text="${total} + ' R$'"></p>
+                        </div>
+                        <button type="submit" class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase w-100">
                             Finalizar Compra
                         </button>
                     </div>
                 </div>
             </div>
-        </div>
         </form>
     </div>
 </div>
+
 <!-- Cart Page End -->
-<div th:replace="shared/footer"></div> o método do pagamento e o id do administrador devem ser obtidos por aqui  
+<div th:replace="shared/footer"></div>
+        

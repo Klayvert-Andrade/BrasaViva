@@ -1,6 +1,6 @@
 package com.SpringWeb.Fruitables.models;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -13,8 +13,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "vendas")
@@ -38,21 +36,22 @@ public class Venda {
     @Column(name = "metodo_pagamento")
     private String metodoPagamento;
 
-    @Column(name = "data_venda", columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dataVenda;
+    @Column(name = "data_venda", nullable = false)
+    private LocalDateTime dataVenda;
 
     @OneToMany(mappedBy = "venda", cascade = CascadeType.ALL)
     private List<ItemCarrinho> itens;
 
-    public Venda() {}
+    public Venda() {
+        this.dataVenda = LocalDateTime.now();
+    }
 
     public Venda(Cliente cliente, Administrador administrador, double valorTotal, String metodoPagamento, List<ItemCarrinho> itens) {
         this.cliente = cliente;
         this.administrador = administrador;
         this.valorTotal = valorTotal;
         this.metodoPagamento = metodoPagamento;
-        this.dataVenda = new Date(); // Define a data da venda como a data atual
+        this.dataVenda = LocalDateTime.now();  // Define a data da venda como a data atual
         this.itens = itens;
     }
 
@@ -96,12 +95,12 @@ public class Venda {
     public void setMetodoPagamento(String metodoPagamento) {
         this.metodoPagamento = metodoPagamento;
     }
-
-    public Date getDataVenda() {
+    
+    public LocalDateTime getDataVenda() {
         return dataVenda;
     }
 
-    public void setDataVenda(Date dataVenda) {
+    public void setDataVenda(LocalDateTime dataVenda) {
         this.dataVenda = dataVenda;
     }
 

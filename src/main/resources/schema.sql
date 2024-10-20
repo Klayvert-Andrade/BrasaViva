@@ -2,7 +2,7 @@
 CREATE TABLE IF NOT EXISTS administradores (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(180) NOT NULL,
-    email VARCHAR(180) NOT NULL,
+    email VARCHAR(180) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
     cpf VARCHAR(20) NOT NULL UNIQUE
 );
@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS administradores (
 CREATE TABLE IF NOT EXISTS clientes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(180) NOT NULL,
-    email VARCHAR(180) NOT NULL,
+    email VARCHAR(180) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
     cpf VARCHAR(20) NOT NULL UNIQUE,
     estado VARCHAR(20) NOT NULL,
@@ -62,8 +62,9 @@ CREATE TABLE IF NOT EXISTS item_carrinho (
     id INT AUTO_INCREMENT PRIMARY KEY,
     produto_id INT NOT NULL,
     carrinho_id INT NOT NULL,
+    venda_id INT, -- Adicionando a coluna venda_id para vincular a venda
     quantidade INT NOT NULL,
     CONSTRAINT fk_item_carrinho_produto FOREIGN KEY (produto_id) REFERENCES produtos(id),
-    CONSTRAINT fk_item_carrinho_carrinho FOREIGN KEY (carrinho_id) REFERENCES carrinho(id)
+    CONSTRAINT fk_item_carrinho_carrinho FOREIGN KEY (carrinho_id) REFERENCES carrinho(id),
+    CONSTRAINT fk_item_carrinho_venda FOREIGN KEY (venda_id) REFERENCES vendas(id) -- Cria a relação com a tabela vendas
 );
-

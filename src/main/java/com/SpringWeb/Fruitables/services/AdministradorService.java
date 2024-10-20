@@ -1,7 +1,5 @@
 package com.SpringWeb.Fruitables.services;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +13,7 @@ public class AdministradorService {
     private AdministradoresRepo administradorRepo;
 
     public Administrador findById(int id) {
-        
-        Optional<Administrador> administradorOpt = administradorRepo.findById(id);
-        return administradorOpt.orElse(null);
+        return administradorRepo.findById(id).orElse(null);
     }
 
 }
