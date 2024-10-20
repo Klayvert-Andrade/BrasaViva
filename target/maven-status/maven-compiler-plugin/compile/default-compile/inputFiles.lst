@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Fruitables\src\main\java\com\SpringWeb\Fruitables\controllers\AdministradoresController.java
 C:\Fruitables\src\main\java\com\SpringWeb\Fruitables\controllers\AdministrativoController.java
 C:\Fruitables\src\main\java\com\SpringWeb\Fruitables\controllers\CarrinhoController.java
@@ -31,3 +32,36 @@ C:\Fruitables\src\main\java\com\SpringWeb\Fruitables\services\CarrinhoService.ja
 C:\Fruitables\src\main\java\com\SpringWeb\Fruitables\services\PagamentoService.java
 C:\Fruitables\src\main\java\com\SpringWeb\Fruitables\services\ProdutoService.java
 C:\Fruitables\src\main\java\com\SpringWeb\Fruitables\services\VendaService.java
+=======
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\controllers\AdministradoresController.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\controllers\AdministrativoController.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\controllers\CarrinhoController.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\controllers\ClientesController.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\controllers\ContatoController.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\controllers\EstoqueController.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\controllers\GlobalControllerAdvice.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\controllers\HomeController.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\controllers\LoginAdmController.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\controllers\LoginClienteController.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\controllers\PagamentoController.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\controllers\ProdutoController.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\controllers\ShopController.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\FruitablesApplication.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\models\Administrador.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\models\Carrinho.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\models\Cliente.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\models\Estoque.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\models\ItemCarrinho.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\models\Produto.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\models\Venda.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\repositorio\AdministradoresRepo.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\repositorio\CarrinhoRepo.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\repositorio\ClientesRepo.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\repositorio\EstoqueRepo.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\repositorio\ProdutoRepo.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\repositorio\VendaRepo.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\services\AdministradorService.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\services\CarrinhoService.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\services\ProdutoService.java
+C:\JavaProjects\Fruitables\src\main\java\com\SpringWeb\Fruitables\services\VendaService.java
+>>>>>>> f84930ab2d31a5b0e5d5b867071ab7bd0f2c4d34

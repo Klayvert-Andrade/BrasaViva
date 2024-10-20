@@ -35,7 +35,7 @@ public class LoginAdmController {
             return "login_adm/index";
         }
 
-        Administrador adm = this.repo.Login(admParam.getEmail(), admParam.getSenha());
+        Administrador adm = this.repo.login(admParam.getEmail(), admParam.getSenha());
         if(adm != null) {
             // Se lembrar de mim estiver ativado, adicionar lógica de cookie
             if("on".equals(lembrar)) {
