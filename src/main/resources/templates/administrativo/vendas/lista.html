@@ -1,0 +1,47 @@
+<div th:replace="~{administrativo/shared_adm/header}"></div>
+<!-- Begin Page Content -->
+<div class="container-fluid page-content">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-4 text-gray-800">Relatório de Vendas</h1>
+    
+    <!-- Relatório de Vendas -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Informações das Vendas</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID Venda</th>
+                            <th>Cliente</th>
+                            <th>Administrador</th>
+                            <th>Data da Venda</th>
+                            <th>Valor Total</th>
+                            <th>Itens Vendidos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="venda : ${vendas}">
+                            <td th:text="${venda.id}"></td>
+                            <td th:text="${venda.cliente.nome}"></td>
+                            <td th:text="${venda.administrador.nome}"></td>
+                            <td th:text="${venda.dataVenda}"></td>
+                            <td th:text="${venda.valorTotal}"></td>
+                            <!-- <td>
+                                <ul>
+                                    <li th:each="item : ${venda.itens}" th:text="${item.produto.nome} + ' - ' + ${item.quantidade} + ' - R$ ' + ${item.precoUnitario}"></li>
+                                </ul>
+                            </td> -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+<div th:replace="~{administrativo/shared_adm/footer}"></div>

@@ -68,3 +68,15 @@ ON DUPLICATE KEY UPDATE
     categoria = VALUES(categoria),
     imagem_url = VALUES(imagem_url),
     quantidade_estoque = VALUES(quantidade_estoque);
+
+
+INSERT INTO vendas (cliente_id, administrador_id, valor_total, metodo_pagamento, data_venda) VALUES
+(1, 1, 50.00, 'Cartão de Crédito', '2024-10-15 14:30:00'),
+(2, 2, 75.00, 'PIX', '2024-10-16 10:15:00'),
+(1, 1, 30.00, 'Dinheiro', '2024-10-17 11:45:00');
+
+INSERT INTO item_vendas (venda_id, produto_id, cliente_id, administrador_id, quantidade, preco_unitario) VALUES
+(1, 1, 1, 1, 2, 10.00),  -- 2 unidades de Produto A
+(1, 2, 1, 1, 1, 20.00),  -- 1 unidade de Produto B
+(2, 1, 2, 2, 1, 30.00),  -- 1 unidade de Produto C
+(3, 1, 1, 1, 1, 10.00);  -- 1 unidade de Produto A

@@ -1,15 +1,19 @@
 package com.SpringWeb.Fruitables.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.SpringWeb.Fruitables.models.Administrador;
 import com.SpringWeb.Fruitables.models.Carrinho;
 import com.SpringWeb.Fruitables.models.Cliente;
+import com.SpringWeb.Fruitables.models.Venda;
 import com.SpringWeb.Fruitables.services.AdministradorService;
 import com.SpringWeb.Fruitables.services.CarrinhoService;
 import com.SpringWeb.Fruitables.services.VendaService;
@@ -57,21 +61,21 @@ public class PagamentoController {
             @RequestParam("metodoPagamento") String metodoPagamento, 
             @RequestParam("sellerCode") int sellerCode, 
             HttpSession session, 
-            Model model) {
-        // Recuperar cliente logado
+            Model model, RedirectAttributes redirectAttributes) {
+        
         Cliente clienteLogado = (Cliente) session.getAttribute("cliente");
     
         // Verifica se há um cliente logado
         if (clienteLogado == null) {
-            model.addAttribute("erro", "Você precisa estar logado para finalizar a compra.");
-            return "redirect:/login_cliente"; // Redireciona para o login se não houver cliente logado
+            redirectAttributes.addFlashAttribute("erro", "Você precisa estar logado para finalizar a compra.");
+            return "redirect:/login_cliente"; 
         }
     
         // Recuperar o carrinho da sessão
         Carrinho carrinho = carrinhoService.getCarrinhoFromSession();
         if (carrinho == null || carrinho.getItens().isEmpty()) {
-            model.addAttribute("erro", "O carrinho está vazio.");
-            return "redirect:/carrinho"; // Redireciona para a página do carrinho se estiver vazio
+            redirectAttributes.addFlashAttribute("erro", "O carrinho está vazio.");
+            return "redirect:/carrinho"; 
         }
     
         // Calcular o valor total com o frete
@@ -80,24 +84,33 @@ public class PagamentoController {
         // Obter o administrador pelo código do vendedor usando o serviço
         Administrador administrador = administradorService.findById(sellerCode);
         if (administrador == null) {
-            model.addAttribute("erro", "Código de vendedor inválido.");
-            return "redirect:/carrinho"; // Redireciona para a página do carrinho se o vendedor for inválido
+            redirectAttributes.addFlashAttribute("erro", "Código de vendedor inválido.");
+            return "redirect:/carrinho"; 
         }
     
         try {
-            // Chama o serviço para finalizar a venda
             vendaService.finalizarVenda(clienteLogado, administrador, carrinho.getItens(), valorTotal, metodoPagamento);
         } catch (Exception e) {
-            // Redireciona com erro em vez de adicionar ao modelo
+            e.printStackTrace();
             session.setAttribute("erro", "Ocorreu um erro ao finalizar a venda: " + e.getMessage());
-            return "redirect:/carrinho"; // Redireciona para a página do carrinho em caso de erro
+            return "redirect:/shop";
         }
     
-        // Limpar o carrinho após a venda
         carrinhoService.limparCarrinho();
     
-        // Redirecionar para /home após a compra ser finalizada com sucesso
         return "redirect:/home";
     }
-    
+
+    @GetMapping("/relatorios/vendas")
+    public String listar(Model model) {
+        try {
+            List<Venda> vendas = vendaService.findAll(); 
+            model.addAttribute("vendas", vendas);
+            return "administrativo/vendas/lista"; // Verifique se o nome do template está correto
+        } catch (Exception e) {
+            e.printStackTrace(); // Log da exceção para depuração
+            model.addAttribute("error", "Erro ao carregar as vendas."); // Mensagem de erro
+            return "error"; // Redireciona para uma página de erro genérica
+        }
+    }
 }

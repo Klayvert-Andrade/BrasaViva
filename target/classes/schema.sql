@@ -53,8 +53,8 @@ CREATE TABLE IF NOT EXISTS vendas (
     valor_total DECIMAL(10, 2) NOT NULL,
     metodo_pagamento VARCHAR(50),
     data_venda DATETIME DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_venda_cliente FOREIGN KEY (cliente_id) REFERENCES clientes(id),
-    CONSTRAINT fk_venda_administrador FOREIGN KEY (administrador_id) REFERENCES administradores(id)
+    CONSTRAINT fk_venda_cliente FOREIGN KEY (cliente_id) REFERENCES clientes(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_venda_administrador FOREIGN KEY (administrador_id) REFERENCES administradores(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- Criação da tabela item_carrinho (relacionada às tabelas produtos e carrinho)
@@ -67,4 +67,15 @@ CREATE TABLE IF NOT EXISTS item_carrinho (
     CONSTRAINT fk_item_carrinho_produto FOREIGN KEY (produto_id) REFERENCES produtos(id),
     CONSTRAINT fk_item_carrinho_carrinho FOREIGN KEY (carrinho_id) REFERENCES carrinho(id),
     CONSTRAINT fk_item_carrinho_venda FOREIGN KEY (venda_id) REFERENCES vendas(id) -- Cria a relação com a tabela vendas
+);
+
+-- Criação da tabela item_vendas
+CREATE TABLE IF NOT EXISTS item_vendas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    venda_id INT NOT NULL,
+    produto_id INT NOT NULL,
+    quantidade INT NOT NULL,
+    preco_unitario DECIMAL(10, 2) NOT NULL,
+    CONSTRAINT fk_item_venda_venda FOREIGN KEY (venda_id) REFERENCES vendas(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_item_venda_produto FOREIGN KEY (produto_id) REFERENCES produtos(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
