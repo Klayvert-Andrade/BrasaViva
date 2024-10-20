@@ -51,7 +51,7 @@ public class Carrinho {
     }
 
     public void removerProduto(Produto produto) {
-        itens.removeIf(item -> item.getProduto().equals(produto));
+        itens.removeIf(item -> item.getProduto().getId() == produto.getId());
     }
 
     public void atualizarQuantidade(Produto produto, int quantidade) {

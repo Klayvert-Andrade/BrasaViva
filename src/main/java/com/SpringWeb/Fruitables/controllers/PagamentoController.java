@@ -1,5 +1,6 @@
 package com.SpringWeb.Fruitables.controllers;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,11 +47,18 @@ public class PagamentoController {
     @GetMapping("/finalizar")
     public String finalizarCompra(Model model) {
         Carrinho carrinho = carrinhoService.getCarrinhoFromSession(); // Obter o carrinho da sessão
-        double shipping = 3.00;
+        double desconto = 0.0;
+
+        double total = carrinhoService.calcularTotal() - desconto;
+
+        // Formatar o total para duas casas decimais
+        DecimalFormat df = new DecimalFormat("#.00");
+        String totalFormatado = df.format(total);
+
         model.addAttribute("cart", carrinho);
         model.addAttribute("subtotal", carrinhoService.calcularTotal());
-        model.addAttribute("shipping", shipping);
-        model.addAttribute("total", carrinhoService.calcularTotal() + shipping); // Total para exibir o preço total
+        model.addAttribute("desconto", desconto);
+        model.addAttribute("total", totalFormatado); // Total para exibir o preço total
         model.addAttribute("quantidadeItens", carrinhoService.contarItensNoCarrinho()); // Adiciona a quantidade de itens ao modelo
 
         return "pagamento/finalizar";
