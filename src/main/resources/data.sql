@@ -61,7 +61,6 @@ VALUES
     ('Molho de Alho', 'Molho cremoso de alho', 3.90, 'Molhos', '/imagens/molho_de_alho.jpg', 50),
     ('Pimenta', 'Molho de pimenta tradicional', 3.50, 'Molhos', '/imagens/pimenta.jpg', 50),
     ('Vinagrete', 'Molho vinagrete de tomate e cebola', 4.90, 'Molhos', '/imagens/vinagrete.jpg', 50)
-
 ON DUPLICATE KEY UPDATE
     descricao = VALUES(descricao),
     preco = VALUES(preco),
@@ -73,10 +72,25 @@ ON DUPLICATE KEY UPDATE
 INSERT INTO vendas (cliente_id, administrador_id, valor_total, metodo_pagamento, data_venda) VALUES
 (1, 1, 50.00, 'Cartão de Crédito', '2024-10-15 14:30:00'),
 (2, 2, 75.00, 'PIX', '2024-10-16 10:15:00'),
-(1, 1, 30.00, 'Dinheiro', '2024-10-17 11:45:00');
+(1, 1, 30.00, 'Berries', '2024-10-17 11:45:00')
+ON DUPLICATE KEY UPDATE
+    valor_total = VALUES(valor_total),
+    metodo_pagamento = VALUES(metodo_pagamento),
+    data_venda = VALUES(data_venda);
 
 INSERT INTO item_vendas (venda_id, produto_id, quantidade, preco_unitario) VALUES
-(1, 1, 2, 10.00),  -- 2 unidades de Produto A
-(1, 2, 1, 20.00),  -- 1 unidade de Produto B
-(2, 1, 1, 30.00),  -- 1 unidade de Produto C
-(3, 1, 1, 10.00);  -- 1 unidade de Produto A
+(1, 1, 2, 79.90),  -- 2 unidades de Picanha
+(1, 2, 2, 9.90),   -- 2 unidades de Arroz
+(1, 3, 1, 14.90),  -- 1 unidade de Feijão Tropeiro
+(1, 4, 1, 18.90),  -- 1 unidade de Caipirinha
+
+(2, 1, 1, 79.90),  -- 1 unidade de Picanha
+(2, 5, 1, 29.90),  -- 1 unidade de Vinho
+
+(3, 1, 2, 79.90),  -- 2 unidades de Picanha
+(3, 2, 3, 9.90),   -- 3 unidades de Arroz
+(3, 4, 2, 18.90)  -- 2 unidades de Caipirinha
+
+ON DUPLICATE KEY UPDATE
+    quantidade = VALUES(quantidade),
+    preco_unitario = VALUES(preco_unitario);

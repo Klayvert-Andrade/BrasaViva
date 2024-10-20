@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.SpringWeb.Fruitables.models.ItemCarrinho;
 import com.SpringWeb.Fruitables.models.ItemVenda;
 import com.SpringWeb.Fruitables.models.Produto;
 import com.SpringWeb.Fruitables.models.Venda;
@@ -16,15 +17,19 @@ public class ItemVendaService {
     @Autowired
     private ItemVendaRepo itemVendaRepo;
 
-    public void salvarItensVenda(Venda venda, List<Produto> produtos) {
-        for (Produto produto : produtos) {
-            ItemVenda itemVenda = new ItemVenda();
-            itemVenda.setVenda(venda);
-            itemVenda.setProduto(produto);
-            itemVenda.setQuantidade(produto.getQuantidadeEstoque());
-            itemVenda.setPrecoUnitario(produto.getPreco());
-            
-            itemVendaRepo.save(itemVenda);
-        }
+    public void salvarItensVenda(Venda venda, List<ItemCarrinho> itens) {
+    for (ItemCarrinho item : itens) {
+        Produto produto = item.getProduto();
+        ItemVenda itemVenda = new ItemVenda();
+        
+        // Setar os dados do item da venda
+        itemVenda.setVenda(venda);
+        itemVenda.setProduto(produto);
+        itemVenda.setQuantidade(item.getQuantidade());  // Quantidade vendida
+        itemVenda.setPrecoUnitario(produto.getPreco());
+
+        // Salvar o item da venda
+        itemVendaRepo.save(itemVenda);
     }
+}
 }

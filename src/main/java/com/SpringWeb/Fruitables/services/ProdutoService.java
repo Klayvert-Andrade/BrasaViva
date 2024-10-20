@@ -89,5 +89,7 @@ public class ProdutoService {
         return produtoRepo.findAll(Sort.by(Sort.Direction.DESC, "nome"));
     }
 
-    
+    public void save(Produto produto) {
+        produtoRepo.save(produto);
+    }
 }

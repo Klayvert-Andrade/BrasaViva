@@ -1,7 +1,6 @@
 package com.SpringWeb.Fruitables.services;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +21,11 @@ public class VendaService {
     @Autowired
     private ItemVendaService itemVendaService;
 
+    @Autowired
+    private ProdutoService produtoService;
+
     public void finalizarVenda(Cliente cliente, Administrador administrador, List<ItemCarrinho> itens, double valorTotal, String metodoPagamento) {
+       
         Venda novaVenda = new Venda();
         novaVenda.setCliente(cliente);
         novaVenda.setAdministrador(administrador);
@@ -31,11 +34,20 @@ public class VendaService {
         
         vendaRepo.save(novaVenda);
 
-        List<Produto> produtosVendidos = itens.stream()
-            .map(ItemCarrinho::getProduto)
-            .collect(Collectors.toList());
+        for (ItemCarrinho item : itens) {
+            Produto produto = item.getProduto();
+            int quantidadeVendida = item.getQuantidade();
+            
+            // Verificar se o estoque é suficiente para a quantidade vendida
+            if (produto.getQuantidadeEstoque() >= quantidadeVendida) {
+                produto.setQuantidadeEstoque(produto.getQuantidadeEstoque() - quantidadeVendida);
+                produtoService.save(produto);
+            } else {
+                throw new IllegalArgumentException("Quantidade insuficiente em estoque para o produto: " + produto.getNome());
+            }
+        }
 
-        itemVendaService.salvarItensVenda(novaVenda, produtosVendidos);
+        itemVendaService.salvarItensVenda(novaVenda, itens);
     }
 
     public List<Venda> findAll() {
