@@ -1,5 +1,7 @@
 package com.SpringWeb.Fruitables.controllers;
 
+import java.text.DecimalFormat;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,12 +24,20 @@ public class CarrinhoController {
 
     @GetMapping
     public String showCart(Model model) {
-        Carrinho carrinho = carrinhoService.getCarrinhoFromSession(); // Obter o carrinho da sessão
-        double shipping = 3.00;
+        Carrinho carrinho = carrinhoService.getCarrinhoFromSession();
+        double desconto = 0.0;
+
+        // Calcular total
+        double total = carrinhoService.calcularTotal() - desconto;
+
+        // Formatar o total para duas casas decimais
+        DecimalFormat df = new DecimalFormat("#.00");
+        String totalFormatado = df.format(total);
+
         model.addAttribute("cart", carrinho);
         model.addAttribute("subtotal", carrinhoService.calcularTotal());
-        model.addAttribute("shipping", shipping);
-        model.addAttribute("total", carrinhoService.calcularTotal() + shipping); // Total para exibir o preço total
+        model.addAttribute("desconto", desconto);
+        model.addAttribute("total", totalFormatado); // Total para exibir o preço total
         model.addAttribute("quantidadeItens", carrinhoService.contarItensNoCarrinho()); // Adiciona a quantidade de itens ao modelo
         return "carrinho/index"; 
     }
@@ -66,5 +76,28 @@ public class CarrinhoController {
     public void addCarrinhoAttributes(Model model) {
         int quantidadeItens = carrinhoService.contarItensNoCarrinho();
         model.addAttribute("quantidadeItens", quantidadeItens);
+    }
+
+    @PostMapping("/aplicarCupom")
+    public String aplicarCupom(@RequestParam("codigoCupom") String codigoCupom, Model model) {
+        Carrinho carrinho = carrinhoService.getCarrinhoFromSession(); 
+        double desconto = 0.0;
+    
+        // Verifica se o cupom é válido e define o desconto
+        if ("flamengo".equalsIgnoreCase(codigoCupom)) {
+            desconto = 5.00; 
+        } else if ("onepiece".equalsIgnoreCase(codigoCupom)) {
+            desconto = 10.00; // Defina o valor de desconto para o cupom "onepiece"
+        } else if ("sousapb".equalsIgnoreCase(codigoCupom)) {
+            desconto = 7.00; // Defina o valor de desconto para o cupom "sousapb"
+        }
+    
+        // Adiciona os atributos ao modelo
+        model.addAttribute("cart", carrinho);
+        model.addAttribute("subtotal", carrinhoService.calcularTotal());
+        model.addAttribute("desconto", desconto); // Aplica o desconto
+        model.addAttribute("total", (carrinhoService.calcularTotal() - desconto)); // Calcula o total
+    
+        return "carrinho/index"; 
     }
 }
