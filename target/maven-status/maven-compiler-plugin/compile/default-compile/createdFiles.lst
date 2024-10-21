@@ -2,18 +2,15 @@ com\SpringWeb\Fruitables\controllers\ProdutoController.class
 com\SpringWeb\Fruitables\models\Administrador.class
 com\SpringWeb\Fruitables\controllers\EstoqueController.class
 com\SpringWeb\Fruitables\services\ProdutoService.class
+com\SpringWeb\Fruitables\services\AdministradorService.class
 com\SpringWeb\Fruitables\repositorio\CarrinhoRepo.class
 com\SpringWeb\Fruitables\services\VendaService.class
 com\SpringWeb\Fruitables\services\CarrinhoService.class
 com\SpringWeb\Fruitables\controllers\GlobalControllerAdvice.class
 com\SpringWeb\Fruitables\models\Produto.class
 com\SpringWeb\Fruitables\repositorio\ClientesRepo.class
-<<<<<<< HEAD
 com\SpringWeb\Fruitables\repositorio\VendaRepo.class
 com\SpringWeb\Fruitables\controllers\LoginAdmController.class
-com\SpringWeb\Fruitables\models\Pagamento.class
-=======
->>>>>>> f84930ab2d31a5b0e5d5b867071ab7bd0f2c4d34
 com\SpringWeb\Fruitables\controllers\ClientesController.class
 com\SpringWeb\Fruitables\models\Cliente.class
 com\SpringWeb\Fruitables\controllers\ContatoController.class
