@@ -58,7 +58,7 @@
                 <tbody>
                     <tr th:each="venda : ${vendas}">
                         <td th:text="${venda.id}"></td>
-                        <td th:text="${#dates.format(venda.dataVenda, 'dd/MM/yyyy')}"></td> <!-- Formatação da data -->
+                        <td th:text="${venda.dataVenda}"></td>
                         <td th:text="${venda.valorTotal} + ' R$'"></td>
                         <td>
                             <!-- Botão para mostrar itens da venda -->
@@ -70,8 +70,8 @@
 
                             <!-- Lista de itens escondida -->
                             <div th:id="'itensVenda' + ${venda.id}" class="collapse mt-2">
-                                <ul class="list-group">
-                                    <li th:each="item : ${venda.itens}" class="list-group-item" 
+                                <ul>
+                                    <li th:each="item : ${venda.itens}" 
                                         th:text="${item.produto.nome} + ' - ' + ${item.quantidade} + ' - R$ ' + ${item.precoUnitario}">
                                     </li>
                                 </ul>

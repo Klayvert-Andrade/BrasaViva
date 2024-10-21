@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.SpringWeb.Fruitables.models.Carrinho;
 import com.SpringWeb.Fruitables.services.CarrinhoService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/carrinho")
 public class CarrinhoController {
@@ -79,7 +81,7 @@ public class CarrinhoController {
     }
 
     @PostMapping("/aplicarCupom")
-    public String aplicarCupom(@RequestParam("codigoCupom") String codigoCupom, Model model) {
+    public String aplicarCupom(@RequestParam("codigoCupom") String codigoCupom, Model model, HttpSession session) {
         Carrinho carrinho = carrinhoService.getCarrinhoFromSession(); 
         double desconto = 0.0;
     
@@ -91,12 +93,15 @@ public class CarrinhoController {
         } else if ("sousapb".equalsIgnoreCase(codigoCupom)) {
             desconto = 7.00; // Defina o valor de desconto para o cupom "sousapb"
         }
+
+        // Armazenar o desconto na sessão
+        session.setAttribute("desconto", desconto);
     
         // Adiciona os atributos ao modelo
         model.addAttribute("cart", carrinho);
         model.addAttribute("subtotal", carrinhoService.calcularTotal());
-        model.addAttribute("desconto", desconto); // Aplica o desconto
-        model.addAttribute("total", (carrinhoService.calcularTotal() - desconto)); // Calcula o total
+        model.addAttribute("desconto", desconto); 
+        model.addAttribute("total", (carrinhoService.calcularTotal() - desconto)); 
     
         return "carrinho/index"; 
     }

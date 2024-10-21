@@ -96,12 +96,11 @@ public class ClientesController {
 
     @GetMapping("perfil/info")
     public String mostrarCompras(HttpSession session, Model model) {
-        // Obter informações do cliente logado
+
         Cliente cliente = (Cliente) session.getAttribute("cliente");
         
         if (cliente == null) {
-            // Redirecionar ou retornar uma mensagem de erro se o cliente não for encontrado
-            return "redirect:/login_cliente"; // ou uma página de erro apropriada
+            return "redirect:/login_cliente";
         }
 
         List<Venda> compras = compraService.findByCliente(cliente); // Recuperar compras do cliente

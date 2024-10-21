@@ -45,11 +45,14 @@ public class PagamentoController {
     }
 
     @GetMapping("/finalizar")
-    public String finalizarCompra(Model model) {
+    public String finalizarCompra(Model model, HttpSession session) {
         Carrinho carrinho = carrinhoService.getCarrinhoFromSession(); // Obter o carrinho da sessão
-        double desconto = 0.0;
 
-        double total = carrinhoService.calcularTotal() - desconto;
+        // Recuperar o desconto da sessão
+        Double desconto = (Double) session.getAttribute("desconto");
+        double valorDesconto = (desconto != null) ? desconto : 0.0;
+
+        double total = carrinhoService.calcularTotal() - valorDesconto;
 
         // Formatar o total para duas casas decimais
         DecimalFormat df = new DecimalFormat("#.00");
@@ -85,9 +88,13 @@ public class PagamentoController {
             redirectAttributes.addFlashAttribute("erro", "O carrinho está vazio.");
             return "redirect:/carrinho"; 
         }
+
+         // Recuperar o desconto da sessão
+        Double desconto = (Double) session.getAttribute("desconto");
+        double valorDesconto = (desconto != null) ? desconto : 0.0;
     
         // Calcular o valor total com o frete
-        double valorTotal = carrinhoService.calcularTotal() + 3.00; // 3.00 é o valor do frete
+        double valorTotal = carrinhoService.calcularTotal() - valorDesconto; // 3.00 é o valor do frete
     
         // Obter o administrador pelo código do vendedor usando o serviço
         Administrador administrador = administradorService.findById(sellerCode);
@@ -103,6 +110,8 @@ public class PagamentoController {
             session.setAttribute("erro", "Ocorreu um erro ao finalizar a venda: " + e.getMessage());
             return "redirect:/shop";
         }
+
+        session.removeAttribute("desconto");
     
         carrinhoService.limparCarrinho();
     

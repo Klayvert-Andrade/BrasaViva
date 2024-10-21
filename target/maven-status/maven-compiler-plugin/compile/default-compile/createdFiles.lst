@@ -22,6 +22,7 @@ com\SpringWeb\Fruitables\controllers\ShopController.class
 com\SpringWeb\Fruitables\repositorio\ItemVendaRepo.class
 com\SpringWeb\Fruitables\controllers\CarrinhoController.class
 com\SpringWeb\Fruitables\repositorio\AdministradoresRepo.class
+com\SpringWeb\Fruitables\services\ClienteService.class
 com\SpringWeb\Fruitables\models\ItemCarrinho.class
 com\SpringWeb\Fruitables\controllers\HomeController.class
 com\SpringWeb\Fruitables\controllers\PagamentoController.class
