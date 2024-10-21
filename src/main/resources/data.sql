@@ -25,42 +25,50 @@ INSERT INTO produtos (nome, descricao, preco, categoria, imagem_url, quantidade_
 VALUES
 
     -- Carnes
-    ('Picanha', 'Picanha grelhada no ponto ideal', 79.90, 'Carnes', '/img/picanha.jpeg', 50),
-    ('Maminha', 'Maminha suculenta assada na brasa', 64.90, 'Carnes', '/img/maminha.jpg', 50),
-    ('Fraldinha', 'Fraldinha macia e saborosa', 69.90, 'Carnes', '/img/fraldinha.jpg', 50),
-    ('Costela', 'Costela bovina assada lentamente', 74.90, 'Carnes', '/img/costela.jpg', 50),
-    ('Alcatra', 'Alcatra grelhada no espeto', 59.90, 'Carnes', '/imagens/alcatra.jpg', 50),
-    ('Cupim', 'Cupim com toque de ervas finas', 72.90, 'Carnes', '/imagens/cupim.jpg', 50),
-    ('Cordeiro', 'Pernil de cordeiro assado no ponto', 89.90, 'Carnes', '/imagens/cordeiro.jpg', 50),
-    ('Frango', 'Frango (Coração, Asa, Coxa) temperado e grelhado', 34.90, 'Carnes', '/imagens/frango.jpg', 50),
-    ('Linguiça', 'Linguiça de pernil suculenta grelhada', 29.90, 'Carnes', '/imagens/linguica.jpg', 50),
-    ('Salmão', 'Salmão grelhado com toque de limão', 95.90, 'Carnes', '/imagens/salmao.jpg', 50),
-    ('Tilápia', 'Tilápia grelhada ao molho de ervas', 49.90, 'Carnes', '/imagens/tilapia.jpg', 50),
+    ('Picanha', 'Picanha grelhada no ponto ideal', 79.90, 'Carnes', '/img/picanha.jpeg', 50), -- ok
+    ('Maminha', 'Maminha suculenta assada na brasa', 64.90, 'Carnes', '/img/maminha.jpg', 50), -- ok
+    ('Fraldinha', 'Fraldinha macia e saborosa', 69.90, 'Carnes', '/img/fraldinha.jpg', 50), -- ok
+    ('Costela', 'Costela bovina assada lentamente', 74.90, 'Carnes', '/img/costela.jpg', 50), -- ok
+    ('Alcatra', 'Alcatra grelhada no espeto', 59.90, 'Carnes', '/img/alcatra.jpg', 50), -- ok
+    ('Cupim', 'Cupim com toque de ervas finas', 72.90, 'Carnes', '/img/cupim.jpg', 50), -- ok
+    ('Cordeiro', 'Pernil de cordeiro assado no ponto', 89.90, 'Carnes', '/img/cordeiro.jpg', 50), -- ok
+    ('Frango', 'Frango (Coração, Asa, Coxa) temperado e grelhado', 34.90, 'Carnes', '/img/frango.jpg', 50), -- ok
+    ('Linguiça', 'Linguiça de pernil suculenta grelhada', 29.90, 'Carnes', '/img/linguica.jpg', 50), -- ok
+    ('Salmão', 'Salmão grelhado com toque de limão', 95.90, 'Carnes', '/img/salmao.jpg', 50), -- ok
+    ('Tilápia', 'Tilápia grelhada ao molho de ervas', 49.90, 'Carnes', '/img/tilapia.jpg', 50), -- ok
 
     -- Acompanhamentos
-    ('Arroz', 'Arroz branco soltinho', 9.90, 'Acompanhamentos', '/img/arroz.jpg', 100),
-    ('Feijão Tropeiro', 'Feijão tropeiro com bacon e farinha de mandioca', 14.90, 'Acompanhamentos', '/imagens/feijao_tropeiro.jpg', 100),
-    ('Farofa', 'Farofa crocante com bacon', 12.90, 'Acompanhamentos', '/imagens/farofa.jpg', 100),
-    ('Batata Frita', 'Batata frita crocante', 15.90, 'Acompanhamentos', '/imagens/batata_frita.jpg', 100),
-    ('Salada de Maionese', 'Maionese com batatas e cenoura', 16.90, 'Acompanhamentos', '/imagens/salada_maionese.jpg', 100),
-    ('Polenta Frita', 'Polenta frita crocante', 13.90, 'Acompanhamentos', '/imagens/polenta_frita.jpg', 100),
-    ('Mandioca Frita', 'Mandioca frita crocante', 14.90, 'Acompanhamentos', '/imagens/mandioca_frita.jpg', 100),
+    ('Arroz', 'Arroz branco soltinho', 9.90, 'Acompanhamentos', '/img/arroz.png', 100), -- ok
+    ('Feijão Tropeiro', 'Feijão tropeiro com bacon e farinha de mandioca', 14.90, 'Acompanhamentos', '/img/feijao-tropeiro.jpg', 100), -- ok
+    ('Farofa', 'Farofa crocante com bacon', 12.90, 'Acompanhamentos', '/img/farofa.jpg', 100), -- ok
+    ('Batata Frita', 'Batata frita crocante', 15.90, 'Acompanhamentos', '/img/batata-frita.jpg', 100), -- ok
+    ('Salada de Maionese', 'Maionese com batatas e cenoura', 16.90, 'Acompanhamentos', '/img/salada-de-maionese.jpeg', 100), -- ok
+    ('Polenta Frita', 'Polenta frita crocante', 13.90, 'Acompanhamentos', '/img/polenta.jpg', 100), -- ok
+    ('Mandioca Frita', 'Mandioca frita crocante', 14.90, 'Acompanhamentos', '/img/mandioca.jpg', 100), -- ok
 
     -- Bebidas
 
-    ('Cerveja Artesanal', 'Seleção de cervejas artesanais locais', 19.90, 'Bebidas', '/imagens/cerveja_artesanal.jpg', 100),
-    ('Vinho', 'Taça de vinho tinto ou branco', 29.90, 'Bebidas', '/imagens/vinho.jpg', 100),
-    ('Caipirinha', 'Tradicional caipirinha brasileira', 18.90, 'Bebidas', '/imagens/caipirinha.jpg', 100),
-    ('Refrigerante', 'Refrigerantes variados (lata)', 7.90, 'Bebidas', '/imagens/refrigerante.jpg', 100),
-    ('Suco Natural', 'Suco de frutas frescas', 9.90, 'Bebidas', '/imagens/suco_natural.jpg', 100),
-    ('Água com Gás', 'Água mineral com gás', 5.90, 'Bebidas', '/imagens/agua_com_gas.jpg', 100),
-    ('Água sem Gás', 'Água mineral sem gás', 4.90, 'Bebidas', '/imagens/agua_sem_gas.jpg', 100),
+    ('Cerveja Artesanal', 'Seleção de cervejas artesanais locais', 19.90, 'Bebidas', '/img/cerveja-artesanal.jpg', 100), -- ok
+    ('Vinho', 'Taça de vinho tinto ou branco', 29.90, 'Bebidas', '/img/vinho.png', 100), -- ok
+    ('Caipirinha', 'Tradicional caipirinha brasileira', 18.90, 'Bebidas', '/img/caipirinha.jpg', 100), -- ok
+    ('Refrigerante', 'Refrigerantes variados (lata)', 7.90, 'Bebidas', '/img/refrigerante.jpg', 100), -- ok
+    ('Suco Natural', 'Suco de frutas frescas', 9.90, 'Bebidas', '/img/suco.jpg', 100), -- ok
+    ('Água com Gás', 'Água mineral com gás', 5.90, 'Bebidas', '/img/agua-com-gas.jpg', 100), -- ok
+    ('Água sem Gás', 'Água mineral sem gás', 4.90, 'Bebidas', '/img/agua.jpg', 100), --ok
 
     -- Molhos
+<<<<<<< HEAD
+    ('Chimichurri', 'Molho argentino à base de ervas', 4.90, 'Molhos', '/img/chimichurri.jpg', 50), -- ok
+    ('Molho de Alho', 'Molho cremoso de alho', 3.90, 'Molhos', '/img/molho-de-alho.png', 50), -- ok
+    ('Pimenta', 'Molho de pimenta tradicional', 3.50, 'Molhos', '/img/pimenta.jpg', 50), -- ok
+    ('Vinagrete', 'Molho vinagrete de tomate e cebola', 4.90, 'Molhos', '/img/vinagrete.jpg', 50) -- ok
+
+=======
     ('Chimichurri', 'Molho argentino à base de ervas', 4.90, 'Molhos', '/imagens/chimichurri.jpg', 50),
     ('Molho de Alho', 'Molho cremoso de alho', 3.90, 'Molhos', '/imagens/molho_de_alho.jpg', 50),
     ('Pimenta', 'Molho de pimenta tradicional', 3.50, 'Molhos', '/imagens/pimenta.jpg', 50),
     ('Vinagrete', 'Molho vinagrete de tomate e cebola', 4.90, 'Molhos', '/imagens/vinagrete.jpg', 50)
+>>>>>>> 5852dc29fb7d04b1723902c21a4dece90432ed3e
 ON DUPLICATE KEY UPDATE
     descricao = VALUES(descricao),
     preco = VALUES(preco),

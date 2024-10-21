@@ -14,6 +14,11 @@
     <property name="os.name" value="Windows 11"/>
     <property name="java.vm.specification.version" value="22"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
+<<<<<<< HEAD
+    <property name="user.country" value="BR"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-22\bin"/>
+    <property name="sun.java.command" value="C:\Users\pesso\AppData\Local\Temp\surefire10740059559244805402\surefirebooter-20241020234810125_3.jar C:\Users\pesso\AppData\Local\Temp\surefire10740059559244805402 2024-10-20T23-48-09_911-jvmRun1 surefire-20241020234810125_1tmp surefire_0-20241020234810125_2tmp"/>
+=======
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-22.0.1\bin"/>
     <property name="sun.java.command" value="C:\Users\klay-\AppData\Local\Temp\surefire3008318947201646354\surefirebooter-20241021015805620_3.jar C:\Users\klay-\AppData\Local\Temp\surefire3008318947201646354 2024-10-21T01-58-05_341-jvmRun1 surefire-20241021015805620_1tmp surefire_0-20241021015805620_2tmp"/>
