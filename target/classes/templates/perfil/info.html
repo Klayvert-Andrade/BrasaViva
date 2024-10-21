@@ -1,0 +1,91 @@
+<div th:replace="shared/header"></div>
+
+<!-- Single Page Header start -->
+<div class="container-fluid page-header py-5">
+    <h1 class="text-center text-white display-6">Registro de Compras</h1>
+</div>
+<!-- Single Page Header End -->
+
+<!-- Client Information and Purchase History Start -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <h2 class="text-center mb-4">Bem-vindo, <span th:text="${cliente.nome}">Nome do Cliente</span>!</h2>
+
+        <h3 class="mb-4">Suas Informações</h3>
+        <div class="table-responsive mb-5">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th scope="row">Nome</th>
+                        <td th:text="${cliente.nome}"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Email</th>
+                        <td th:text="${cliente.email}"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">CPF</th>
+                        <td th:text="${cliente.cpf}"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Telefone</th>
+                        <td th:text="${cliente.telefone}"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Estado</th>
+                        <td th:text="${cliente.estado}"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Cidade</th>
+                        <td th:text="${cliente.cidade}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Suas Informações End -->
+        
+        <h3 class="mb-4">Suas Compras</h3>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Detalhes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="venda : ${vendas}">
+                        <td th:text="${venda.id}"></td>
+                        <td th:text="${#dates.format(venda.dataVenda, 'dd/MM/yyyy')}"></td> <!-- Formatação da data -->
+                        <td th:text="${venda.valorTotal} + ' R$'"></td>
+                        <td>
+                            <!-- Botão para mostrar itens da venda -->
+                            <button class="btn btn-primary" type="button" data-toggle="collapse" 
+                                    th:data-target="'#itensVenda' + ${venda.id}" aria-expanded="false" 
+                                    th:aria-controls="'itensVenda' + ${venda.id}">
+                                Mostrar Itens
+                            </button>
+
+                            <!-- Lista de itens escondida -->
+                            <div th:id="'itensVenda' + ${venda.id}" class="collapse mt-2">
+                                <ul class="list-group">
+                                    <li th:each="item : ${venda.itens}" class="list-group-item" 
+                                        th:text="${item.produto.nome} + ' - ' + ${item.quantidade} + ' - R$ ' + ${item.precoUnitario}">
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr th:if="${#lists.isEmpty(vendas)}">
+                        <td colspan="4" class="text-center">Você não tem compras registradas.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Client Information and Purchase History End -->
+
+<div th:replace="shared/footer"></div>

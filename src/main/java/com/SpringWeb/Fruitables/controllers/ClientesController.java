@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.SpringWeb.Fruitables.models.Cliente;
+import com.SpringWeb.Fruitables.models.Venda;
 import com.SpringWeb.Fruitables.repositorio.ClientesRepo;
+import com.SpringWeb.Fruitables.services.VendaService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -22,6 +24,9 @@ public class ClientesController {
 
     @Autowired
     private ClientesRepo repo;
+
+    @Autowired
+    private VendaService compraService; // Serviço para gerenciar compras
 
     @GetMapping("/clientes")
     public String index(Model model) {
@@ -89,18 +94,24 @@ public class ClientesController {
         return "administrativo/clientes/lista";
     }  
 
-    @GetMapping("/perfil")
-    public String perfil(Model model, HttpSession session) {
+    @GetMapping("perfil/info")
+    public String mostrarCompras(HttpSession session, Model model) {
+        // Obter informações do cliente logado
         Cliente cliente = (Cliente) session.getAttribute("cliente");
-        if (cliente == null) {
-            return "redirect:/login_cliente";
-        }
-        model.addAttribute("cliente", cliente);
-        return "cliente/perfil";
-    }
-
-    
         
+        if (cliente == null) {
+            // Redirecionar ou retornar uma mensagem de erro se o cliente não for encontrado
+            return "redirect:/login_cliente"; // ou uma página de erro apropriada
+        }
+
+        List<Venda> compras = compraService.findByCliente(cliente); // Recuperar compras do cliente
+
+        // Adicionar atributos ao modelo
+        model.addAttribute("cliente", cliente);
+        model.addAttribute("compras", compras);
+
+        return "perfil/info"; // Retorne a view para mostrar as compras
+    }
 } 
 
 

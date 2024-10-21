@@ -53,4 +53,8 @@ public class VendaService {
     public List<Venda> findAll() {
         return vendaRepo.findAll();
     }
+
+    public List<Venda> findByCliente(Cliente cliente) {
+        return vendaRepo.findByCliente(cliente); // Método que busca compras pelo cliente
+    }
 }
