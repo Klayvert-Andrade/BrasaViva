@@ -47,7 +47,6 @@ VALUES
     ('Mandioca Frita', 'Mandioca frita crocante', 14.90, 'Acompanhamentos', '/img/mandioca.jpg', 100), -- ok
 
     -- Bebidas
-
     ('Cerveja Artesanal', 'Seleção de cervejas artesanais locais', 19.90, 'Bebidas', '/img/cerveja-artesanal.jpg', 100), -- ok
     ('Vinho', 'Taça de vinho tinto ou branco', 29.90, 'Bebidas', '/img/vinho.png', 100), -- ok
     ('Caipirinha', 'Tradicional caipirinha brasileira', 18.90, 'Bebidas', '/img/caipirinha.jpg', 100), -- ok
@@ -57,18 +56,11 @@ VALUES
     ('Água sem Gás', 'Água mineral sem gás', 4.90, 'Bebidas', '/img/agua.jpg', 100), --ok
 
     -- Molhos
-<<<<<<< HEAD
     ('Chimichurri', 'Molho argentino à base de ervas', 4.90, 'Molhos', '/img/chimichurri.jpg', 50), -- ok
     ('Molho de Alho', 'Molho cremoso de alho', 3.90, 'Molhos', '/img/molho-de-alho.png', 50), -- ok
     ('Pimenta', 'Molho de pimenta tradicional', 3.50, 'Molhos', '/img/pimenta.jpg', 50), -- ok
     ('Vinagrete', 'Molho vinagrete de tomate e cebola', 4.90, 'Molhos', '/img/vinagrete.jpg', 50) -- ok
 
-=======
-    ('Chimichurri', 'Molho argentino à base de ervas', 4.90, 'Molhos', '/imagens/chimichurri.jpg', 50),
-    ('Molho de Alho', 'Molho cremoso de alho', 3.90, 'Molhos', '/imagens/molho_de_alho.jpg', 50),
-    ('Pimenta', 'Molho de pimenta tradicional', 3.50, 'Molhos', '/imagens/pimenta.jpg', 50),
-    ('Vinagrete', 'Molho vinagrete de tomate e cebola', 4.90, 'Molhos', '/imagens/vinagrete.jpg', 50)
->>>>>>> 5852dc29fb7d04b1723902c21a4dece90432ed3e
 ON DUPLICATE KEY UPDATE
     descricao = VALUES(descricao),
     preco = VALUES(preco),
