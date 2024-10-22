@@ -57,18 +57,12 @@ VALUES
     ('Água sem Gás', 'Água mineral sem gás', 4.90, 'Bebidas', '/img/agua.jpg', 100), --ok
 
     -- Molhos
-<<<<<<< HEAD
+
     ('Chimichurri', 'Molho argentino à base de ervas', 4.90, 'Molhos', '/img/chimichurri.jpg', 50), -- ok
     ('Molho de Alho', 'Molho cremoso de alho', 3.90, 'Molhos', '/img/molho-de-alho.png', 50), -- ok
     ('Pimenta', 'Molho de pimenta tradicional', 3.50, 'Molhos', '/img/pimenta.jpg', 50), -- ok
     ('Vinagrete', 'Molho vinagrete de tomate e cebola', 4.90, 'Molhos', '/img/vinagrete.jpg', 50) -- ok
 
-=======
-    ('Chimichurri', 'Molho argentino à base de ervas', 4.90, 'Molhos', '/imagens/chimichurri.jpg', 50),
-    ('Molho de Alho', 'Molho cremoso de alho', 3.90, 'Molhos', '/imagens/molho_de_alho.jpg', 50),
-    ('Pimenta', 'Molho de pimenta tradicional', 3.50, 'Molhos', '/imagens/pimenta.jpg', 50),
-    ('Vinagrete', 'Molho vinagrete de tomate e cebola', 4.90, 'Molhos', '/imagens/vinagrete.jpg', 50)
->>>>>>> 5852dc29fb7d04b1723902c21a4dece90432ed3e
 ON DUPLICATE KEY UPDATE
     descricao = VALUES(descricao),
     preco = VALUES(preco),
@@ -78,9 +72,9 @@ ON DUPLICATE KEY UPDATE
 
 
 INSERT INTO vendas (cliente_id, administrador_id, valor_total, metodo_pagamento, data_venda) VALUES
-(1, 1, 50.00, 'Cartão de Crédito', '2024-10-15 14:30:00'),
-(2, 2, 75.00, 'PIX', '2024-10-16 10:15:00'),
-(1, 1, 30.00, 'Berries', '2024-10-17 11:45:00')
+(1, 1, 213.40, 'Cartão de Crédito', '2024-10-15 14:30:00'),
+(2, 2, 109.80, 'PIX', '2024-10-16 10:15:00'),
+(1, 1, 227.30, 'Berries', '2024-10-17 11:45:00')
 ON DUPLICATE KEY UPDATE
     valor_total = VALUES(valor_total),
     metodo_pagamento = VALUES(metodo_pagamento),

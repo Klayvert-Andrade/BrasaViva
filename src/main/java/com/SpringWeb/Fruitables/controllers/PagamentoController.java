@@ -94,7 +94,7 @@ public class PagamentoController {
         double valorDesconto = (desconto != null) ? desconto : 0.0;
     
         // Calcular o valor total com o frete
-        double valorTotal = carrinhoService.calcularTotal() - valorDesconto; // 3.00 é o valor do frete
+        double valorTotal = carrinhoService.calcularTotal() - valorDesconto;
     
         // Obter o administrador pelo código do vendedor usando o serviço
         Administrador administrador = administradorService.findById(sellerCode);

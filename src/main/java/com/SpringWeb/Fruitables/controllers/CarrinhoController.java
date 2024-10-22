@@ -29,17 +29,16 @@ public class CarrinhoController {
         Carrinho carrinho = carrinhoService.getCarrinhoFromSession();
         double desconto = 0.0;
 
-        // Calcular total
-        double total = carrinhoService.calcularTotal() - desconto;
+        double subtotal = carrinhoService.calcularTotal() - 0.0;
+        double total = subtotal - desconto;
 
-        // Formatar o total para duas casas decimais
         DecimalFormat df = new DecimalFormat("#.00");
-        String totalFormatado = df.format(total);
-
+    
+        // Adiciona os atributos ao modelo
         model.addAttribute("cart", carrinho);
-        model.addAttribute("subtotal", carrinhoService.calcularTotal());
-        model.addAttribute("desconto", desconto);
-        model.addAttribute("total", totalFormatado); // Total para exibir o preço total
+        model.addAttribute("subtotal", df.format(subtotal));
+        model.addAttribute("desconto", desconto); 
+        model.addAttribute("total", df.format(total));
         model.addAttribute("quantidadeItens", carrinhoService.contarItensNoCarrinho()); // Adiciona a quantidade de itens ao modelo
         return "carrinho/index"; 
     }
@@ -96,12 +95,17 @@ public class CarrinhoController {
 
         // Armazenar o desconto na sessão
         session.setAttribute("desconto", desconto);
+
+        double subtotal = carrinhoService.calcularTotal() - 0.0;
+        double total = subtotal - desconto;
+
+        DecimalFormat df = new DecimalFormat("#.00");
     
         // Adiciona os atributos ao modelo
         model.addAttribute("cart", carrinho);
-        model.addAttribute("subtotal", carrinhoService.calcularTotal());
+        model.addAttribute("subtotal", df.format(subtotal));
         model.addAttribute("desconto", desconto); 
-        model.addAttribute("total", (carrinhoService.calcularTotal() - desconto)); 
+        model.addAttribute("total", df.format(total));
     
         return "carrinho/index"; 
     }

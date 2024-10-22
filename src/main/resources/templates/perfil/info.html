@@ -11,7 +11,7 @@
     <div class="container py-5">
         <h2 class="text-center mb-4">Bem-vindo, <span th:text="${cliente.nome}">Nome do Cliente</span>!</h2>
 
-        <h3 class="mb-4">Suas Informações</h3>
+        <h3 class="mb-4">Minhas Informações</h3>
         <div class="table-responsive mb-5">
             <table class="table table-bordered">
                 <tbody>
@@ -44,20 +44,22 @@
         </div>
         <!-- Suas Informações End -->
         
-        <h3 class="mb-4">Suas Compras</h3>
+        <h3 class="mb-4">Minhas Compras</h3>
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
+                        <th scope="col">Quantidade</th>
                         <th scope="col">Data</th>
                         <th scope="col">Total</th>
-                        <th scope="col">Detalhes</th>
+                        <th scope="col">Produtos</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="venda : ${vendas}">
                         <td th:text="${venda.id}"></td>
+                        <td th:text="${venda.quantidade}"></td>
                         <td th:text="${venda.dataVenda}"></td>
                         <td th:text="${venda.valorTotal} + ' R$'"></td>
                         <td>
@@ -68,11 +70,11 @@
                                 Mostrar Itens
                             </button>
 
-                            <!-- Lista de itens escondida -->
+                            <!-- Lista de itens da venda, colapsada por padrão -->
                             <div th:id="'itensVenda' + ${venda.id}" class="collapse mt-2">
                                 <ul>
                                     <li th:each="item : ${venda.itens}" 
-                                        th:text="${item.produto.nome} + ' - ' + ${item.quantidade} + ' - R$ ' + ${item.precoUnitario}">
+                                        th:text="${item.produto.nome} + ' - ' + ${item.quantidade} + ' unidade(s) - R$ ' + ${#numbers.formatDecimal(item.precoUnitario, 1, 2)}">
                                     </li>
                                 </ul>
                             </div>

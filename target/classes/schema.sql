@@ -79,3 +79,48 @@ CREATE TABLE IF NOT EXISTS item_vendas (
     CONSTRAINT fk_item_venda_venda FOREIGN KEY (venda_id) REFERENCES vendas(id) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT fk_item_venda_produto FOREIGN KEY (produto_id) REFERENCES produtos(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+
+-- CREATE VIEW detalhes_vendas AS
+-- SELECT 
+--     v.id AS venda_id,
+--     c.id AS cliente_id, 
+--     c.nome AS cliente_nome,
+--     p.nome AS produto_nome,
+--     iv.quantidade AS quantidade_produto,
+--     iv.preco_unitario,
+--     (iv.quantidade * iv.preco_unitario) AS total_produto,
+--     v.valor_total AS total_venda,
+--     v.data_venda
+-- FROM 
+--     vendas v
+-- JOIN 
+--     clientes c ON v.cliente_id = c.id
+-- JOIN 
+--     item_vendas iv ON v.id = iv.venda_id
+-- JOIN 
+--     produtos p ON iv.produto_id = p.id;
+
+
+-- DELIMITER //
+
+-- CREATE PROCEDURE registrar_venda (
+--     IN p_cliente_id INT,
+--     IN p_administrador_id INT,
+--     IN p_valor_total DECIMAL(10, 2),
+--     IN p_metodo_pagamento VARCHAR(50)
+-- )
+-- BEGIN
+
+--     INSERT INTO vendas (cliente_id, administrador_id, valor_total, metodo_pagamento)
+--     VALUES (p_cliente_id, p_administrador_id, p_valor_total, p_metodo_pagamento);
+    
+--     SET @last_venda_id = LAST_INSERT_ID();
+    
+--     UPDATE item_carrinho
+--     SET venda_id = @last_venda_id
+--     WHERE carrinho_id IN (SELECT id FROM carrinho WHERE cliente_id = p_cliente_id);
+    
+-- END //
+
+-- DELIMITER ;

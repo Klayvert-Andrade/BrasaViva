@@ -57,4 +57,9 @@ public class VendaService {
     public List<Venda> findByCliente(Cliente cliente) {
         return vendaRepo.findByCliente(cliente); // Método que busca compras pelo cliente
     }
+
+    // // Método para buscar as compras do cliente logado
+    // public List<Venda> getComprasDoCliente(int clienteId) {
+    //     return vendaRepo.getDetalhesVendasByCliente(clienteId);
+    // }
 }

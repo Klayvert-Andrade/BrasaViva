@@ -47,6 +47,7 @@ VALUES
     ('Mandioca Frita', 'Mandioca frita crocante', 14.90, 'Acompanhamentos', '/img/mandioca.jpg', 100), -- ok
 
     -- Bebidas
+
     ('Cerveja Artesanal', 'Seleção de cervejas artesanais locais', 19.90, 'Bebidas', '/img/cerveja-artesanal.jpg', 100), -- ok
     ('Vinho', 'Taça de vinho tinto ou branco', 29.90, 'Bebidas', '/img/vinho.png', 100), -- ok
     ('Caipirinha', 'Tradicional caipirinha brasileira', 18.90, 'Bebidas', '/img/caipirinha.jpg', 100), -- ok
@@ -56,6 +57,7 @@ VALUES
     ('Água sem Gás', 'Água mineral sem gás', 4.90, 'Bebidas', '/img/agua.jpg', 100), --ok
 
     -- Molhos
+
     ('Chimichurri', 'Molho argentino à base de ervas', 4.90, 'Molhos', '/img/chimichurri.jpg', 50), -- ok
     ('Molho de Alho', 'Molho cremoso de alho', 3.90, 'Molhos', '/img/molho-de-alho.png', 50), -- ok
     ('Pimenta', 'Molho de pimenta tradicional', 3.50, 'Molhos', '/img/pimenta.jpg', 50), -- ok
@@ -70,9 +72,9 @@ ON DUPLICATE KEY UPDATE
 
 
 INSERT INTO vendas (cliente_id, administrador_id, valor_total, metodo_pagamento, data_venda) VALUES
-(1, 1, 50.00, 'Cartão de Crédito', '2024-10-15 14:30:00'),
-(2, 2, 75.00, 'PIX', '2024-10-16 10:15:00'),
-(1, 1, 30.00, 'Berries', '2024-10-17 11:45:00')
+(1, 1, 213.40, 'Cartão de Crédito', '2024-10-15 14:30:00'),
+(2, 2, 109.80, 'PIX', '2024-10-16 10:15:00'),
+(1, 1, 227.30, 'Berries', '2024-10-17 11:45:00')
 ON DUPLICATE KEY UPDATE
     valor_total = VALUES(valor_total),
     metodo_pagamento = VALUES(metodo_pagamento),
